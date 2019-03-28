@@ -12,18 +12,18 @@
     <meta name="viewport" content="width=device-width" />
 
     <!-- Bootstrap core CSS     -->
-    <link href="../publica/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="publica/css/bootstrap.min.css" rel="stylesheet" />
     <!--  Material Dashboard CSS    -->
-    <link href="../publica/css/material-dashboard.css" rel="stylesheet" />
+    <link href="publica/css/material-dashboard.css" rel="stylesheet" />
   
     <!--     Fonts and icons     -->
-    <link href="../publica/css/font-awesome.css" rel="stylesheet" />
-    <link href="../publica/css/google-roboto-300-700.css" rel="stylesheet" />
+    <link href="publica/css/font-awesome.css" rel="stylesheet" />
+    <link href="publica/css/google-roboto-300-700.css" rel="stylesheet" />
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-active-color="orange" data-background-color="white" data-image="../publica/img/sidebar-1.jpg">
+        <div class="sidebar" data-active-color="orange" data-background-color="white" data-image="publica/img/sidebar-1.jpg">
             <!--
         Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
         Tip 2: you can also add an image using data-image tag

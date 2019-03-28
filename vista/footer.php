@@ -30,36 +30,35 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script>
-                        <a href="http://www.creative-tim.com/">Creative Tim</a>, made with love for a better web
+                        , made with love for a better web
                     </p>
                 </div>
             </footer>
         </div>
     </div>
-  
 </body>
 <!--   Core JS Files   -->
-<script src="../publica/js/jquery-3.1.1.min.js" type="text/javascript"></script>
-<script src="../publica/js/jquery-ui.min.js" type="text/javascript"></script>
-<script src="../publica/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../publica/js/material.min.js" type="text/javascript"></script>
-<script src="../publica/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<script src="publica/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="publica/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="publica/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="publica/js/material.min.js" type="text/javascript"></script>
+<script src="publica/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
 <!-- Forms Validations Plugin -->
-<script src="../publica/js/jquery.validate.min.js"></script>
+<script src="publica/js/jquery.validate.min.js"></script>
 <!--  Relieve de las estadistica en Inicio -->
-<script src="../publica/js/chartist.min.js"></script>
+<script src="publica/js/chartist.min.js"></script>
 <!--  Formulario -->
-<script src="../publica/js/jquery.bootstrap-wizard.js"></script>
+<script src="publica/js/jquery.bootstrap-wizard.js"></script>
 <!--  Notifications Plugin    -->
-<script src="../publica/js/bootstrap-notify.js"></script>
+<script src="publica/js/bootstrap-notify.js"></script>
 <!--  DataTables.net Plugin    -->
-<script src="../publica/js/jquery.datatables.js"></script>
+<script src="publica/js/jquery.datatables.js"></script>
 <!-- Sweet Alert 2 plugin -->
-<script src="../publica/js/sweetalert2.js"></script>
+<script src="publica/js/sweetalert2.js"></script>
 <!-- Barra de desplazamiento Vertical -->
-<script src="../publica/js/material-dashboard.js"></script>
+<script src="publica/js/material-dashboard.js"></script>
 <!-- Formulario-->
-<script src="../publica/js/demo.js"></script>
+<script src="publica/js/demo.js"></script>
 
 <!-------------------------------  inicio.php ---------------------------   -->
 <script type="text/javascript">
