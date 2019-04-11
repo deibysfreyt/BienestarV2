@@ -125,7 +125,10 @@
                                     <a href="forms/validation.html">Validation Forms</a>
                                 </li>
                                 <li>
-                                    <a href="forms/wizard.html">Wizard</a>
+                                    <a href="tipoSolicitud">Tipos de Solicitudes</a>
+                                </li>
+                                <li>
+                                    <a href="solicitud">Solicitud</a>
                                 </li>
                             </ul>
                         </div>

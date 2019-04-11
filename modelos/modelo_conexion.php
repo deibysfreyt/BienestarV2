@@ -26,10 +26,23 @@
 		public function getConexion() {
 			return $this->conexion;
 		}
+
 		/*public function ejecutarConsulta($sql){
 			$query = $this->getConexion()->query($sql);
 			return $query;
 		}*/
 
 
+	}
+
+	function limpiarCadena($str){
+		
+			//elimine los espacios en blanco (u otros caracteres especiales) desde el principio y el final de una cadena
+			$str = trim($str);
+			
+			//Convertir caracteres especiales a entidades HTML
+			$str = htmlspecialchars($str);
+
+			//Filtra una variable con un filtro especificado. Eliminar etiquetas, opcionalmente eliminar o codificar caracteres especiales.
+			return filter_var($str, FILTER_SANITIZE_STRING);
 	}

@@ -23,7 +23,6 @@ class LoginModel extends C_conexion
 
 		$stmt->execute();
 		return $stmt->fetch(PDO::FETCH_ASSOC);
-		//return $stmt->fecth();
 
 		$stmt->clouse();
 
