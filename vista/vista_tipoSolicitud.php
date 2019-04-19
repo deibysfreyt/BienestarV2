@@ -24,95 +24,59 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                    	<div class="box-header with-border" style="margin-top: -40px;">
-                			<!-- Bonton para mostrar el formulario -->
-			            	<button class="btn btn-rose btn-round" id="btnagregar" onclick="mostrarform(true)">
-			              		<i class="fa fa-plus-circle"></i> Agregar Nueva Solicitudes
-			            	</button>
-			            	<div class="box-tools pull-right"></div>
-			          	</div>                       
                         <div class="col-md-6 col-md-offset-3" id="formularioregistros">
                             <div class="card">
                                 <form id="LoginValidation" method="post">
                                     <div class="card-header card-header-icon" data-background-color="rose">
-                                        <i class="material-icons">contacts</i>
+                                        <i class="material-icons">description</i>
                                     </div>
                                     <div class="card-content">
-                                        <h4 class="card-title">Nuevas Solicitudes a Asignar</h4>
+                                        <h4 class="card-title"> <?php if (isset($respuesta[0])) { echo 'Actualizar ';}else{ echo 'Registrar ';} ?>Solicitudes a Asignar</h4>
                                         <div class="form-group label-floating">
                                             <label class="control-label">Solicitudes
                                                 <star>*</star>
                                             </label>
                                             <select name="solicitud" class="form-control" id="solicitud">
-                                                <option disabled="" selected=""></option>
+                                                <option value="<?php if(isset($respuesta[1])){ echo trim($respuesta[1]); }  ?>" selected=""> <?php if (isset($respuesta[1])){ echo trim($respuesta[1]); } ?> </option>
                                                 <option value="Ayudas Medicas">Ayudas Medicas</option>
-								                <option value="Canastillas">Canastillas</option>
-								                <option value="Enseres y Ayudas Tecnicas">Enseres y Ayudas Técnicas</option>
-								                <option value="Otros">Otros</option>
+                                                <option value="Canastillas">Canastillas</option>
+                                                <option value="Enseres y Ayudas Tecnicas">Enseres y Ayudas Técnicas</option>
+                                                <option value="Otros">Otros</option>
                                             </select>
                                         </div>
                                         <div class="form-group label-floating">
                                             <label class="control-label">Descripción
                                                 <star>*</star>
                                             </label>
-                                            <input type="hidden" name="id_tipo_solicitud" id="id_tipo_solicitud">
-                                            <input class="form-control" name="descripcion" type="text" id="descripcion" required/>
+                                            <input type="hidden" name="id_tipo_solicitud" id="id_tipo_solicitud" value="<?php if(isset($respuesta[0])){ echo trim($respuesta[0]); } ?>">
+                                            <input class="form-control" name="descripcion" type="text" id="descripcion" value="<?php if(isset($respuesta[2])){ echo trim($respuesta[2]); } ?>" required/>
+                                        </div>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Estado
+                                                <star>*</star>
+                                            </label>
+                                            <select name="condicion" class="form-control" id="condicion">
+                                                <option value="<?php if(isset($respuesta[3]) && $respuesta[3]==1){ echo $respuesta[3]; }else{ echo '1'; }  ?>" <?php if(isset($respuesta[3]) && $respuesta[3]==1){ echo 'selected=""'; }?> >
+                                                    <?php if (isset($respuesta[3]) && $respuesta[3]==1){ echo 'Habilitado'; }else{ echo 'Habilitado'; } ?>
+                                                </option>
+                                                <option value="<?php if(isset($respuesta[3]) && $respuesta[3]==0){ echo $respuesta[3]; }else{ echo '0'; }  ?>"  <?php if(isset($respuesta[3]) && $respuesta[3]==0){ echo 'selected=""'; }?> >
+                                                    <?php if (isset($respuesta[3]) && $respuesta[3]==0 ){ echo 'Deshabilitado'; }else{ echo 'Deshabilitado'; } ?>
+                                                </option>
+                                            </select>
                                         </div>
                                         <div class="category form-category">
                                             <star>*</star> Archivos Requeridos </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-rose btn-fill btn-wd">Register</button>
-                                            <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                                            <button type="submit" class="btn btn-rose btn-fill btn-wd"> <?php if (isset($respuesta[0])) { echo 'Actualizar';}else{ echo 'Registrar';} ?> </button>
+                                            <a href="index.php?do=tablaSolicitud"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
                                         </div>
                                     </div>
                                 </form>
                                 <div>
-                                	
+                                    
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12" id="listadoregistros">
-                            <div class="card">
-                                <div class="card-header card-header-icon" data-background-color="purple">
-                                    <i class="material-icons">assignment</i>
-                                </div>
-                                <div class="card-content">
-                                    <h4 class="card-title">DataTables.net</h4>
-                                    <div class="toolbar">
-                                        <!--        Here you can write extra buttons/actions for the toolbar              -->
-                                    </div>
-                                    <div class="material-datatables">
-                                        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Date</th>
-                                                    <th class="disabled-sorting text-right">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>Position</th>
-                                                    <th>Office</th>
-                                                    <th>Age</th>
-                                                    <th>Start date</th>
-                                                    <th class="text-right">Actions</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <!-- end content-->
-                            </div>
-                            <!--  end card  -->
-                        </div>                      
+                        </div>                 
                     </div>
                 </div>
             </div>

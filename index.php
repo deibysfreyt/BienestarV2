@@ -10,6 +10,11 @@
 	//variable para indicar que pagina
 	//se muestra 
 	$action = "login";
+	
+	$op = "";
+	if (!empty($_GET['op'])) {
+		$op = $_GET['op'];
+	}
 	//condicional que lee la solicitud
 	//de cambio de paction  
 	if (!empty($_GET['do'])) {

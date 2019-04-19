@@ -1,13 +1,11 @@
 <!doctype html>
 <html lang="en">
-
-
 <!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:29:18 GMT -->
 <head>
     <meta charset="utf-8" />
  
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Material Dashboard PRO by Creative Tim | Premium Bootstrap Admin Template</title>
+    <title>Fundacion de Niño</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
@@ -125,7 +123,7 @@
                                     <a href="forms/validation.html">Validation Forms</a>
                                 </li>
                                 <li>
-                                    <a href="tipoSolicitud">Tipos de Solicitudes</a>
+                                    <a href="tablaSolicitud">Tipos de Solicitudes</a>
                                 </li>
                                 <li>
                                     <a href="solicitud">Solicitud</a>
