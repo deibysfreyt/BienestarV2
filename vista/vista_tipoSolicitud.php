@@ -18,7 +18,6 @@
                         </button>
                         <a class="navbar-brand" href="#"> Tipos de Solicitudes </a>
                     </div>
-                    
                 </div>
             </nav>
             <div class="content">
@@ -48,7 +47,7 @@
                                             <label class="control-label">Descripción
                                                 <star>*</star>
                                             </label>
-                                            <input type="hidden" name="id_tipo_solicitud" id="id_tipo_solicitud" value="<?php if(isset($respuesta[0])){ echo trim($respuesta[0]); } ?>">
+                                            <input type="hidden" name="id_tipo_solicitud" id="id_tipo_solicitud" value="<?php if(isset($respuesta[0])){ echo $respuesta[0]; } ?>">
                                             <input class="form-control" name="descripcion" type="text" id="descripcion" value="<?php if(isset($respuesta[2])){ echo trim($respuesta[2]); } ?>" required/>
                                         </div>
                                         <div class="form-group label-floating">
@@ -72,9 +71,6 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div>
-                                    
-                                </div>
                             </div>
                         </div>                 
                     </div>

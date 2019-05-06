@@ -80,7 +80,7 @@
                                                                         <a href="#" class="btn btn-simple btn-'.$tipo.' btn-icon"><i class="material-icons">'.$icono.'</i></a>
                                                                     </td>
                                                                     <td class="text-right">
-                                                                        <a href="index.php?do=tipoSolicitud&id='.$item["id_tipo_solicitud"].'" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">dvr</i></a>
+                                                                        <a href="index.php?do=tipoSolicitud&id='.$item["id_tipo_solicitud"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
                                                                     </td>
                                                                 </tr>';                                                         
                                                     }//fin del foreach                                        
