@@ -2,9 +2,9 @@
 	
 	if (is_file("vista/vista_".$action.".php")) {
 		
-		require_once("modelos/modelo_tipoSolicitud.php");
+		require_once("modelos/modelo_gestorSolicitud.php");
 
-		$tipoSolicitudMol = new TipoSolicitudMol();
+		$gestorSolicitud = new GestorSolicitud();
 
 		require_once("vista/vista_".$action.".php");
 		

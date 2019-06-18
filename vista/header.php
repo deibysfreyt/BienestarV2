@@ -123,7 +123,7 @@
                                     <a href="forms/validation.html">Validation Forms</a>
                                 </li>
                                 <li>
-                                    <a href="tablaSolicitud">Tipos de Solicitudes</a>
+                                    <a href="tablaSolicitud">Gestion de Solicitudes</a>
                                 </li>
                                 <li>
                                     <a href="solicitud">Solicitud</a>

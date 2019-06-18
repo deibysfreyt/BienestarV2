@@ -8,25 +8,16 @@
 	  	if(isset($_POST["username"])){
 
 
-
 	  		if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["username"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])) {
-	  			
-	  			//$datosControl = array(	'username'=>$_POST["username"],
-										//'password'=>$_POST["password"]);
 
-	  			//$id_tipo_solicitud=isset($_POST["id_tipo_solicitud"])? limpiarCadena($_POST["id_tipo_solicitud"]):"";
-	  			$datosControl = array(	'username'=>isset($_POST["username"])? limpiarCadena($_POST["username"]):"",
-										'password'=>isset($_POST["password"])? limpiarCadena($_POST["password"]):""
-									);
+	  			$login = new Login();
 
-				$loginModel= new LoginModel();			
-				$respuesta = $loginModel->ingresoLogin($datosControl);
+	  			$login->setUsername($_POST["username"]);
+	  			$login->setPassword($_POST["password"]);
 
-				$user=trim($respuesta["username"]);
-				$pass=trim($respuesta["password"]);
-				
+	  			$respuesta = $login->ingresoLogin();
 
-				if ($user==$_POST["username"] && $pass==$_POST["password"]) {
+	  			if ($respuesta["condicion"]) {
 
 					header("location:index");
 

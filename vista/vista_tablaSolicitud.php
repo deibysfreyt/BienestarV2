@@ -26,7 +26,7 @@
                     <div class="row">
                     	<div class="box-header with-border" style="margin-top: -40px;">
                 			<!-- Bonton para mostrar el formulario -->
-			            	<a href="index.php?do=tipoSolicitud"><button class="btn btn-rose btn-round" id="btnagregar">
+			            	<a href="index.php?do=gestorSolicitud"><button class="btn btn-rose btn-round" id="btnagregar">
 			              		<i class="fa fa-plus-circle"></i> Agregar Nueva Solicitudes
 			            	</button></a>
 			            	<div class="box-tools pull-right"></div>
@@ -62,7 +62,7 @@
                                             <tbody>
                                                 <?php
                                                     //Listamos todo los datos para mostrarlo en el DATA TABLE
-                                                    $resp=$tipoSolicitudMol->listarTS();
+                                                    $resp=$gestorSolicitud->listarGS();
                                                             
                                                     foreach ($resp as $row => $item) {
 
@@ -80,7 +80,7 @@
                                                                         <a href="#" class="btn btn-simple btn-'.$tipo.' btn-icon"><i class="material-icons">'.$icono.'</i></a>
                                                                     </td>
                                                                     <td class="text-right">
-                                                                        <a href="index.php?do=tipoSolicitud&id='.$item["id_tipo_solicitud"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
+                                                                        <a href="index.php?do=gestorSolicitud&id='.$item["id_tipo_solicitud"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
                                                                     </td>
                                                                 </tr>';                                                         
                                                     }//fin del foreach                                        
