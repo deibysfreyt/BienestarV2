@@ -1,4 +1,4 @@
-<?php
+<?php // Los PHP puros no se van a cerrar por medidas de seguridad
 
 	//configura la zona horaria
 	date_default_timezone_set('America/Caracas');
