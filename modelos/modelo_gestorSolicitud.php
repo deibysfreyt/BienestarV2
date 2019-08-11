@@ -85,6 +85,17 @@
 			return $stmt->execute();
 			$stmt->clouse();
 		}
+
+		public function seleccionarGS(){
+
+			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM tipo_solicitud WHERE condicion = true");
+
+			$stmt->execute();
+
+			return $stmt->fetchAll();
+
+			$stmt->clouse();
+		}
 	}
 
 

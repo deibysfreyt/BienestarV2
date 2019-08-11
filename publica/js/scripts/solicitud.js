@@ -7,13 +7,13 @@
 
 	var fecha = now.getDate()+'/'+(now.getMonth()+1)+'/'+now.getFullYear();
 
-    //$('#fecha_actual').val(fecha);
+    $('#fecha_actual').val(fecha);
 
-    var f = new Date();
+  //  var f = new Date();
 
-    var fecha_g = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+   // var fecha_g = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
 
-   $('#fecha_actual').val(fecha_g);
+  // $('#fecha_actual').val(fecha_g);
 //Funcion que se ejecuta al inicio
 //function init(){
 	//mostrarform(false);

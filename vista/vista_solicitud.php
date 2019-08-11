@@ -239,7 +239,7 @@
                                                                 <option value="" selected=""></option> 
                                                                 <?php
                                                                     for ($i=0; $i <= 42; $i++) { 
-                                                                        echo "<option value=$i>". $i."</option>";
+                                                                        echo '<option value="$i">'. $i."</option>";
                                                                     }
                                                                 ?>
                                                             </select>
@@ -255,10 +255,17 @@
                                                             <label class="control-label">Tipo de Solicitud
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <select name="id_tipo_solicitud" class="form-control" id="id_tipo_solicitud">
+                                                            <select data-live-search="true" name="id_tipo_solicitud" class="form-control select-picker" id="id_tipo_solicitud" >
 
                                                                 <option disabled="" selected=""></option>
-                                                                
+                                                                <?php
+                                                                    //Listamos todo los datos para mostrarlo en el DATA TABLE
+                                                                    $resp=$gestorSolicitud->seleccionarGS();
+                                                           
+                                                                    foreach ($resp as $row => $item) {
+                                                                        echo '<option value="'.$item["id_tipo_solicitud"].'">'.$item["solicitud"].'-'.$item["descripcion"].'</option>';
+                                                                    }//fin del foreach
+                                                                ?>
                                                             </select>
                                                         </div>
                                                     </div>                                                   
@@ -307,7 +314,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Observacion</label>
-                                                            <input name="observacion" type="text" class="form-control" id="observacion" maxlength="60">
+                                                            <input name="observacion_a" type="text" class="form-control" id="observacion_a" maxlength="60">
                                                         </div>
                                                     </div>                                                            
                                                 </div>
