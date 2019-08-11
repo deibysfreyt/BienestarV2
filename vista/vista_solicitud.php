@@ -21,7 +21,7 @@
                     </div>
                     <div class="navbar-brand">
                         <label>Fecha Actual: </label>
-                        <input type="date" name="fecha_actual" style="border: 0px" id="fecha_actual" readonly=”readonly”>
+                        <input type="text" name="fecha_actual" style="border: 0" id="fecha_actual" readonly=”readonly”>
                     </div>                   
                 </div>
             </nav>
@@ -38,6 +38,13 @@
                                             Build Your Profile
                                         </h3>
                                         <h5>This information will let us know more about you.</h5>
+                                        
+                                                        
+                                                       
+                                                            <label class="control-label">Fecha de Solicitud:</label>
+                                                            <input name="fecha" type="date" style="border: 0" readonly=”readonly” id="fecha">
+                                                    
+                                                    
                                     </div>
                                     <div class="wizard-navigation">
                                         <ul>
@@ -64,32 +71,30 @@
                                                             <label class="control-label">Cedula
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="cedula" type="text" class="form-control" id="cedula">
+                                                            <input name="cedula" type="text" class="form-control" id="cedula" maxlength="8">
                                                             <input type="hidden" name="id_solicitante" id="id_solicitante">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
-                                                            <i class="material-icons">wc</i>
+                                                            <i class="material-icons">phone</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label"> Sexo </label>
-                                                            <select name="sexo" class="form-control" id="sexo">
-                                                                <option disabled="" selected=""></option>
-                                                                <option value="Femenino"> Femenino </option>
-                                                                <option value="Masculino"> Masculino </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">email</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Correo electronico
+                                                            <label class="control-label">Telefono Movil
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="email" type="email" class="form-control" id="email">
+                                                            <input name="tlf_movil" type="email" class="form-control" id="tlf_movil" maxlength="11">
+                                                        </div>
+                                                    </div>
+                                                     <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="material-icons">work</i>
+                                                        </span>
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Ocupacion
+                                                                
+                                                            </label>
+                                                            <input name="ocupacion" type="text" class="form-control" id="ocupacion" maxlength="45">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,29 +108,29 @@
                                                             <label class="control-label">Nombre y Apellido
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="nombre_apellido" type="text" class="form-control" id="nombre_apellido">
+                                                            <input name="nombre_apellido" type="text" class="form-control" id="nombre_apellido" maxlength="45">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
-                                                            <i class="material-icons">work</i>
+                                                            <i class="material-icons">call_end</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Ocupacion
-                                                                <small>(required)</small>
+                                                            <label class="control-label">Telefono Fijo
+                                                                
                                                             </label>
-                                                            <input name="ocupacion" type="text" class="form-control" id="ocupacion">
+                                                            <input name="tlf_fijo" type="text" class="form-control" id="tlf_fijo" maxlength="11">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
-                                                            <i class="material-icons">phone</i>
+                                                            <i class="material-icons">monetization_on</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Telefono principal
-                                                                <small>(required)</small>
+                                                            <label class="control-label">Ingresos Bs.
+                                                            
                                                             </label>
-                                                            <input name="telefono_1" type="email" class="form-control" id="telefono_1">
+                                                            <input name="ingreso" type="text" class="form-control" id="ingreso" maxlength="9">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -135,49 +140,28 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Fecha de naci.
-                                                                <small>(required)</small>
-                                                            </label>
+                                                            
                                                             <input name="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento">
+
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
-                                                            <i class="material-icons">monetization_on</i>
+                                                            <i class="material-icons">accessibility_new</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Ingresos Bs.
-                                                                <small>(required)</small>
-                                                            </label>
-                                                            <input name="ingreso" type="text" class="form-control" id="ingreso">
+                                                            <label class="control-label">Estado Civil</label>
+                                                            <select name="estado_civil" class="form-control" id="estado_civil">
+                                                                <option disabled="" selected=""></option>
+                                                                <option value="Soltera(o)">Soltera(o)</option>
+                                                                <option value="Casada(o)">Casada(o)</option>
+                                                                <option value="Divorciada(o)">Divorciada(o)</option>
+                                                                <option value="Separada(o)">Separada(o)</option>
+                                                                <option value="Conviviente">Conviviente</option>
+                                                                <option value="Viuda(o)">Viuda(o)</option>
+                                                            </select>
                                                         </div>
                                                     </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">call_end</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Telefono Secundario
-                                                                <small>(required)</small>
-                                                            </label>
-                                                            <input name="telefono_2" type="text" class="form-control" id="telefono_2">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-10 col-lg-offset-1">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">home</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Direccion de Habitacion
-                                                                <small>(required)</small>
-                                                            </label>
-                                                            <input name="direccion" type="text" class="form-control" id="direccion">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">                    
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="material-icons">location_city</i>
@@ -200,72 +184,21 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">accessibility_new</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Estado Civil</label>
-                                                            <select name="estado_civil" class="form-control" id="estado_civil">
-                                                                <option value="Soltera(o)">Soltera(o)</option>
-                                                                <option value="Casada(o)">Casada(o)</option>
-                                                                <option value="Divorciada(o)">Divorciada(o)</option>
-                                                                <option value="Separada(o)">Separada(o)</option>
-                                                                <option value="Conviviente">Conviviente</option>
-                                                                <option value="Viuda(o)">Viuda(o)</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>                                                
                                                 </div>
-                                                <div class="col-sm-4">
+                                                <div class="col-lg-10 col-lg-offset-1">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
-                                                            <i class="material-icons">child_care</i>
+                                                            <i class="material-icons">home</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">N° de Hijos</label>
-                                                            <select name="num_hijos" class="form-control" id="num_hijos">
-                                                                <option disabled="" selected=""></option>
-                                                                <option value="0"> 0 </option>
-                                                                <option value="1"> 1 </option>
-                                                                <option value="2"> 2 </option>
-                                                                <option value="3"> 3 </option>
-                                                                <option value="4"> 4 </option>
-                                                                <option value="5"> 5 </option>
-                                                                <option value="6"> 6 </option>
-                                                                <option value="7"> 7 </option>
-                                                                <option value="8"> 8 </option>
-                                                                <option value="9"> 9 </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">security</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Beneficio Gubernamental
+                                                            <label class="control-label">Direccion de Habitacion
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="beneficio_gubernamental" type="text" class="form-control" id="beneficio_gubernamental">
+                                                            <input name="direccion" type="text" class="form-control" id="direccion">
                                                         </div>
-                                                    </div>                                                
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">pregnant_woman</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Esterilizada(o)?</label>
-                                                            <select name="esterilizada" class="form-control" id="esterilizada">
-                                                                <option disabled="" selected=""></option>
-                                                                <option value="Si"> Si </option>
-                                                                <option value="No"> No </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>                                                                        
-                                                </div>                                                
+                                                                                             
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="account">                                            
@@ -277,21 +210,11 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Cedula</label>
-                                                            <input name="cedula_b" type="text" class="form-control" id="cedula_b">
+                                                            <input name="cedula_b" type="text" class="form-control" id="cedula_b" maxlength="8">
                                                             <input type="hidden" name="id_beneficiario" id="id_beneficiario">
                                                         </div>
                                                     </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">supervisor_account</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Parentesco
-                                                                <small>(required)</small>
-                                                            </label>
-                                                            <input name="parentesco" type="text" class="form-control" id="parentesco">
-                                                        </div>
-                                                    </div>                                                    
+                                                                                                        
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -302,7 +225,7 @@
                                                             <label class="control-label">Nombre y Apellido
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="nombre_apellido_b" type="text" class="form-control" id="nombre_apellido_b">
+                                                            <input name="nombre_apellido_b" type="text" class="form-control" id="nombre_apellido_b" maxlength="45">
                                                         </div>
                                                     </div>                                                   
                                                 </div>
@@ -312,9 +235,7 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Fecha de naci.
-                                                                <small>(required)</small>
-                                                            </label>
+                                                            
                                                             <input name="fecha_nacimiento_b" type="date" class="form-control" id="fecha_nacimiento_b">
                                                         </div>
                                                     </div>                                                   
@@ -356,7 +277,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <div><h4 class="info-text"><u> Informacion de vestimenta del niño </u></h4></div>
+                                                    <div><h4 class="info-text"><u> Area Medica Asistencial</u></h4></div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -364,7 +285,16 @@
                                                             <i class="material-icons">pets</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Talla de Zapato</label>
+                                                            <label class="control-label">Diagnostico</label>
+                                                            <input name="talla_zapato" type="text" class="form-control" id="talla_zapato">
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="material-icons">pets</i>
+                                                        </span>
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Monto Aprobado</label>
                                                             <input name="talla_zapato" type="text" class="form-control" id="talla_zapato">
                                                         </div>
                                                     </div>                                                           
@@ -375,10 +305,19 @@
                                                             <i class="material-icons">airline_seat_legroom_reduced</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Talla de Pantalon</label>
+                                                            <label class="control-label">Motivo de la Solicitud</label>
                                                             <input name="talla_pantalon" type="text" class="form-control" id="talla_pantalon">
                                                         </div>
-                                                    </div>                                                           
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="material-icons">local_offer</i>
+                                                        </span>
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Observacion</label>
+                                                            <input name="talla_franela" type="text" class="form-control" id="talla_franela">
+                                                        </div>
+                                                    </div>                                                          
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -386,56 +325,21 @@
                                                             <i class="material-icons">local_offer</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Talla de Franela</label>
+                                                            <label class="control-label">Recursos Disponible</label>
                                                             <input name="talla_franela" type="text" class="form-control" id="talla_franela">
                                                         </div>
-                                                    </div>                                                           
+                                                    </div>
+                                                                                                               
                                                 </div>                                                
+                                            </div>
+                                            <div class="col-sm-4">
+                                                                                                           
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="address">
                                             <div class="row">
                                                 
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">hearing</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Medio de Informacion
-                                                                <small>(required)</small>
-                                                            </label>
-                                                            <input name="medio_informacion" type="text" class="form-control" id="medio_informacion">
-                                                            <input type="hidden" name="id_solicitud" id="id_solicitud">
-                                                        </div>
-                                                    </div>                                                   
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">visibility</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Observacion
-                                                                <small>(required)</small>
-                                                            </label>
-                                                            <input name="observacion" type="text" class="form-control" id="observacion">
-                                                        </div>
-                                                    </div>                                                   
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">event_note</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Fecha de Solicitud
-                                                                <small>(required)</small>
-                                                            </label>
-                                                            <input name="fecha" type="date" readonly=”readonly” class="form-control" id="fecha">
-                                                        </div>
-                                                    </div>                                                   
-                                                </div>
+                                                
                                                 <div class="col-sm-12">
                                                     <div><h4 class="info-text"><u> Area fisica ambiental </u></h4></div>
                                                 </div>
@@ -518,12 +422,10 @@
                                                       <thead class="text-rose">
                                                         <th>Opciones</th>
                                                         <th>Nombre y Apellido</th>
-                                                        <th>Fech. de Naci.</th>
+                                                        <th>Edad</th>
                                                         <th>Parentesco</th>
                                                         <th>Ocupacion</th>
-                                                        <th>Ingreso Bs</th>
-                                                        <th>Peso Kg</th>
-                                                        <th>Talla cm</th>                              
+                                                        <th>Observacion</th>                              
                                                       </thead>
                                                       <tbody>
                                                                   

@@ -1,7 +1,21 @@
 //var tabla;
 
+	var now = new Date();
+	var day = ("0" + now.getDate()).slice(-2);
+	var month = ("0" + (now.getMonth() + 1)).slice(-2);
+	var today = now.getFullYear()+"-"+(month)+"-"+(day);
+
+	var fecha = now.getDate()+'/'+(now.getMonth()+1)+'/'+now.getFullYear();
+
+    //$('#fecha_actual').val(fecha);
+
+    var f = new Date();
+
+    var fecha_g = f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear();
+
+   $('#fecha_actual').val(fecha_g);
 //Funcion que se ejecuta al inicio
-function init(){
+//function init(){
 	//mostrarform(false);
 	//listar();
 
@@ -17,9 +31,11 @@ function init(){
 	})
 	*/
 
-	limpiar();
-	//Obtenemos la fecha actual
+	//limpiar();
 
+
+	//Obtenemos la fecha actual
+/*
 	var now = new Date();
 	var day = ("0" + now.getDate()).slice(-2);
 	var month = ("0" + (now.getMonth() + 1)).slice(-2);
@@ -27,10 +43,11 @@ function init(){
 
 	var fecha = now.getDate()+'-'+(now.getMonth()+1)+'-'+now.getFullYear();
 
-    $('#fecha_actual').val(fecha);
+    $('#fecha_actual').val(fecha);*/
  
-}
+// }
 
+/*
 //Funcion limpiar
 function limpiar(){
 
@@ -86,7 +103,7 @@ function limpiar(){
 	$('#fecha_nacimiento_b').val(fecha);
     $('#fecha').val(fecha);
 
-}
+} */
 
 /*
 
@@ -289,13 +306,11 @@ function agregarDetalle()
   {
     	var fila='<tr class="filas" id="fila'+cont+'">'+
     	'<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle('+cont+')">X</button></td>'+
-    	'<td><input class="form-control" type="text" name="nombre_apellido_f[]" id="nombre_apellido_f[]" placeholder="Nombre y Apellido" maxlength="30"></td>'+
-    	'<td><input class="form-control" type="Date" name="fecha_nacimiento_f[]" id="fecha_nacimiento_f[]"></td>'+
-    	'<td><input class="form-control" type="text" name="parentesco_f[]" id="parentesco_f[]" placeholder="Parentesco" maxlength="10"></td>'+
-    	'<td><input class="form-control" type="text" name="ocupacion_f[]" id="ocupacion_f[]" placeholder="A que se dedica" maxlength="50"></td>'+
-    	'<td><input class="form-control" type="text" name="ingreso_f[]" id="ingreso_f[]" placeholder="Ingreso Monetario" maxlength="7"></td>'+
-    	'<td><input class="form-control" type="text" name="peso_f[]" id="peso_f[]" placeholder="Peso Kg" maxlength="6"></td>'+
-    	'<td><input class="form-control" type="text" name="talla_f[]" id="talla_f[]" placeholder="Medida de Altura" maxlength="3"></td>'+
+    	'<td><input class="form-control" type="text" name="nombre_apellido_f[]" id="nombre_apellido_f[]" placeholder="Nombre y Apellido" maxlength="45"></td>'+
+    	'<td><input class="form-control" type="text" name="edad[]" id="edad[]" placeholder="Edad" maxlength="3"></td>'+
+    	'<td><input class="form-control" type="text" name="parentesco_f[]" id="parentesco_f[]" placeholder="Relacion Familiar" maxlength="30"></td>'+
+    	'<td><input class="form-control" type="text" name="ocupacion_f[]" id="ocupacion_f[]" placeholder="A que se dedica" maxlength="45"></td>'+
+    	'<td><input class="form-control" type="text" name="observacion[]" id="observacion[]" placeholder="Otra Informacion" maxlength="45"></td>'+
     	'<td><input type="hidden" name="id_familiar[]" id="id_familiar[] value="'+cont+'"></td>'+
     	'</tr>';
     	cont++;
