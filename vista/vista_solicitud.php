@@ -38,13 +38,8 @@
                                             Build Your Profile
                                         </h3>
                                         <h5>This information will let us know more about you.</h5>
-                                        
-                                                        
-                                                       
-                                                            <label class="control-label">Fecha de Solicitud:</label>
-                                                            <input name="fecha" type="date" style="border: 0" readonly=”readonly” id="fecha">
-                                                    
-                                                    
+                                        <label class="control-label">Fecha de Solicitud:</label>
+                                        <input name="fecha" type="date" style="border: 0" readonly=”readonly” id="fecha">          
                                     </div>
                                     <div class="wizard-navigation">
                                         <ul>
@@ -91,14 +86,12 @@
                                                             <i class="material-icons">work</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Ocupacion
-                                                                
+                                                            <label class="control-label">Ocupacion  
                                                             </label>
                                                             <input name="ocupacion" type="text" class="form-control" id="ocupacion" maxlength="45">
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
@@ -140,9 +133,7 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            
                                                             <input name="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento">
-
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
@@ -197,8 +188,7 @@
                                                             <input name="direccion" type="text" class="form-control" id="direccion">
                                                         </div>
                                                     </div>
-                                                </div>
-                                                                                             
+                                                </div>                                      
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="account">                                            
@@ -213,8 +203,7 @@
                                                             <input name="cedula_b" type="text" class="form-control" id="cedula_b" maxlength="8">
                                                             <input type="hidden" name="id_beneficiario" id="id_beneficiario">
                                                         </div>
-                                                    </div>
-                                                                                                        
+                                                    </div>                                               
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -235,12 +224,10 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            
                                                             <input name="fecha_nacimiento_b" type="date" class="form-control" id="fecha_nacimiento_b">
                                                         </div>
                                                     </div>                                                   
                                                 </div>
-                                                
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
@@ -259,7 +246,7 @@
                                                         </div>
                                                     </div>                                                           
                                                 </div>
-                                                <div class="col-lg-10 col-lg-offset-1">
+                                                <div class="col-sm-8">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">
                                                             <i class="material-icons">local_hospital</i>
@@ -269,12 +256,12 @@
                                                                 <small>(required)</small>
                                                             </label>
                                                             <select name="id_tipo_solicitud" class="form-control" id="id_tipo_solicitud">
+
                                                                 <option disabled="" selected=""></option>
-                                                                <option value="Si"> Si </option>
-                                                                <option value="No"> No </option>
+                                                                
                                                             </select>
                                                         </div>
-                                                    </div>
+                                                    </div>                                                   
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div><h4 class="info-text"><u> Area Medica Asistencial</u></h4></div>
@@ -286,18 +273,9 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Diagnostico</label>
-                                                            <input name="talla_zapato" type="text" class="form-control" id="talla_zapato">
+                                                            <input name="diagnostico" type="text" class="form-control" id="diagnostico" maxlength="45">
                                                         </div>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">pets</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Monto Aprobado</label>
-                                                            <input name="talla_zapato" type="text" class="form-control" id="talla_zapato">
-                                                        </div>
-                                                    </div>                                                           
+                                                    </div>                                                                                
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -306,18 +284,10 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Motivo de la Solicitud</label>
-                                                            <input name="talla_pantalon" type="text" class="form-control" id="talla_pantalon">
+                                                            <input name="motivo_solicitud" type="text" class="form-control" id="motivo_solicitud" maxlength="45">
                                                         </div>
                                                     </div>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon">
-                                                            <i class="material-icons">local_offer</i>
-                                                        </span>
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Observacion</label>
-                                                            <input name="talla_franela" type="text" class="form-control" id="talla_franela">
-                                                        </div>
-                                                    </div>                                                          
+                                                    >                                                          
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -326,20 +296,36 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Recursos Disponible</label>
-                                                            <input name="talla_franela" type="text" class="form-control" id="talla_franela">
+                                                            <input name="recursos_disponibles" type="text" class="form-control" id="recursos_disponibles" maxlength="9">
                                                         </div>
-                                                    </div>
-                                                                                                               
-                                                </div>                                                
-                                            </div>
-                                            <div class="col-sm-4">
-                                                                                                           
+                                                    </div>                                                           
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="material-icons">local_offer</i>
+                                                        </span>
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Observacion</label>
+                                                            <input name="observacion" type="text" class="form-control" id="observacion" maxlength="60">
+                                                        </div>
+                                                    </div>                                                            
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="material-icons">pets</i>
+                                                        </span>
+                                                        <div class="form-group label-floating">
+                                                            <label class="control-label">Monto Aprobado</label>
+                                                            <input name="monto_aprobado" type="text" class="form-control" id="monto_aprobado" maxlength="9">
+                                                        </div>
+                                                    </div>                                                           
+                                                </div>                                              
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="address">
                                             <div class="row">
-                                                
-                                                
                                                 <div class="col-sm-12">
                                                     <div><h4 class="info-text"><u> Area fisica ambiental </u></h4></div>
                                                 </div>
@@ -416,7 +402,6 @@
                                                       <button id="" type="button" class="btn btn-rose btn-round" onclick="agregarDetalle()"> <span class="fa fa-plus"></span> Agregar Familiar</button>
                                                     </a>
                                                 </div>
-
                                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                                                     <table id="detalles" class="table" style="background-color: rgba(200, 200, 200, 0.2);">
                                                       <thead class="text-rose">
@@ -429,8 +414,7 @@
                                                       </thead>
                                                       <tbody>
                                                                   
-                                                      </tbody>
-                                                                            
+                                                      </tbody>                 
                                                     </table>
                                                 </div>
                                             </div>
