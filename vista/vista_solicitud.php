@@ -39,7 +39,13 @@
                                         </h3>
                                         <h5>This information will let us know more about you.</h5>
                                         <label class="control-label">Fecha de Solicitud:</label>
-                                        <input name="fecha" type="date" style="border: 0" readonly=”readonly” id="fecha">          
+                                        <input name="fecha" type="date" style="border: 0" id="fecha">
+                                        <label class="control-label">Estado de Solicitud:</label>
+                                        <input type="hidden" name="id_solicitud" id="id_solicitud">
+                                        <select name="estado" id="estado" style="border: 0">
+                                            <option value="En espera" selected="">En espera</option>
+                                            <option value="Aprobado">Aprobado</option>             
+                                        </select>
                                     </div>
                                     <div class="wizard-navigation">
                                         <ul>
@@ -78,7 +84,7 @@
                                                             <label class="control-label">Telefono Movil
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="tlf_movil" type="email" class="form-control" id="tlf_movil" maxlength="11">
+                                                            <input type="text" name="tlf_movil" id="tlf_movil" maxlength="11" class="form-control">
                                                         </div>
                                                     </div>
                                                      <div class="input-group">
@@ -88,7 +94,7 @@
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Ocupacion  
                                                             </label>
-                                                            <input name="ocupacion" type="text" class="form-control" id="ocupacion" maxlength="45">
+                                                            <input type="text" name="ocupacion" id="ocupacion" maxlength="45" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -101,7 +107,7 @@
                                                             <label class="control-label">Nombre y Apellido
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="nombre_apellido" type="text" class="form-control" id="nombre_apellido" maxlength="45">
+                                                            <input type="text" name="nombre_apellido" id="nombre_apellido" maxlength="45" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
@@ -109,10 +115,9 @@
                                                             <i class="material-icons">call_end</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Telefono Fijo
-                                                                
+                                                            <label class="control-label">Telefono Fijo  
                                                             </label>
-                                                            <input name="tlf_fijo" type="text" class="form-control" id="tlf_fijo" maxlength="11">
+                                                            <input type="text" name="tlf_fijo" id="tlf_fijo" maxlength="11" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
@@ -121,9 +126,8 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Ingresos Bs.
-                                                            
                                                             </label>
-                                                            <input name="ingreso" type="text" class="form-control" id="ingreso" maxlength="9">
+                                                            <input type="text" name="ingreso" id="ingreso" maxlength="9" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -133,7 +137,7 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <input name="fecha_nacimiento" type="date" class="form-control" id="fecha_nacimiento">
+                                                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
@@ -142,7 +146,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Estado Civil</label>
-                                                            <select name="estado_civil" class="form-control" id="estado_civil">
+                                                            <select name="estado_civil" id="estado_civil" class="form-control">
                                                                 <option disabled="" selected=""></option>
                                                                 <option value="Soltera(o)">Soltera(o)</option>
                                                                 <option value="Casada(o)">Casada(o)</option>
@@ -159,7 +163,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Parroquia</label>
-                                                            <select name="parroquia" class="form-control" id="parroquia">
+                                                            <select name="parroquia" id="parroquia" class="form-control">
                                                                 <option disabled="" selected=""></option>
                                                                 <option value="Buena Vista">Buena Vista</option>
                                                                 <option value="Catedral">Catedral</option>
@@ -185,7 +189,7 @@
                                                             <label class="control-label">Direccion de Habitacion
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="direccion" type="text" class="form-control" id="direccion">
+                                                            <input type="text" name="direccion" id="direccion" maxlength="100" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div>                                      
@@ -200,7 +204,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Cedula</label>
-                                                            <input name="cedula_b" type="text" class="form-control" id="cedula_b" maxlength="8">
+                                                            <input type="text" name="cedula_b" id="cedula_b" maxlength="8" class="form-control">
                                                             <input type="hidden" name="id_beneficiario" id="id_beneficiario">
                                                         </div>
                                                     </div>                                               
@@ -214,7 +218,7 @@
                                                             <label class="control-label">Nombre y Apellido
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="nombre_apellido_b" type="text" class="form-control" id="nombre_apellido_b" maxlength="45">
+                                                            <input type="text" name="nombre_apellido_b" id="nombre_apellido_b" maxlength="45" class="form-control">
                                                         </div>
                                                     </div>                                                   
                                                 </div>
@@ -224,7 +228,7 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <input name="fecha_nacimiento_b" type="date" class="form-control" id="fecha_nacimiento_b">
+                                                            <input type="date" name="fecha_nacimiento_b" id="fecha_nacimiento_b" class="form-control">
                                                         </div>
                                                     </div>                                                   
                                                 </div>
@@ -235,11 +239,11 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Semana de Embarazo?</label>
-                                                            <select name="semana_embarazo" class="form-control" id="semana_embarazo">
+                                                            <select name="semana_embarazo" id="semana_embarazo" class="form-control">
                                                                 <option value="" selected=""></option> 
                                                                 <?php
                                                                     for ($i=0; $i <= 42; $i++) { 
-                                                                        echo '<option value="$i">'. $i."</option>";
+                                                                        echo '<option value=$i>'.$i."</option>";
                                                                     }
                                                                 ?>
                                                             </select>
@@ -255,8 +259,7 @@
                                                             <label class="control-label">Tipo de Solicitud
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <select data-live-search="true" name="id_tipo_solicitud" class="form-control select-picker" id="id_tipo_solicitud" >
-
+                                                            <select name="id_tipo_solicitud" id="id_tipo_solicitud"  data-live-search="true" class="form-control" >
                                                                 <option disabled="" selected=""></option>
                                                                 <?php
                                                                     //Listamos todo los datos para mostrarlo en el DATA TABLE
@@ -271,7 +274,7 @@
                                                     </div>                                                   
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <div><h4 class="info-text"><u> Area Medica Asistencial</u></h4></div>
+                                                    <div><h4 class="info-text"><u>Area Medica Asistencial</u></h4></div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
@@ -280,7 +283,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Diagnostico</label>
-                                                            <input name="diagnostico" type="text" class="form-control" id="diagnostico" maxlength="45">
+                                                            <input type="text" name="diagnostico" id="diagnostico" maxlength="45" class="form-control">
                                                         </div>
                                                     </div>                                                                                
                                                 </div>
@@ -291,7 +294,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Motivo de la Solicitud</label>
-                                                            <input name="motivo_solicitud" type="text" class="form-control" id="motivo_solicitud" maxlength="45">
+                                                            <input type="text" name="motivo_solicitud" id="motivo_solicitud" maxlength="45" class="form-control">
                                                         </div>
                                                     </div>
                                                     >                                                          
@@ -303,7 +306,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Recursos Disponible</label>
-                                                            <input name="recursos_disponibles" type="text" class="form-control" id="recursos_disponibles" maxlength="9">
+                                                            <input type="text" name="recursos_disponibles" id="recursos_disponibles" maxlength="9" class="form-control">
                                                         </div>
                                                     </div>                                                           
                                                 </div>
@@ -314,7 +317,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Observacion</label>
-                                                            <input name="observacion_a" type="text" class="form-control" id="observacion_a" maxlength="60">
+                                                            <input type="text" name="observacion_am" id="observacion_am" maxlength="60" class="form-control">
                                                         </div>
                                                     </div>                                                            
                                                 </div>
@@ -325,7 +328,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Monto Aprobado</label>
-                                                            <input name="monto_aprobado" type="text" class="form-control" id="monto_aprobado" maxlength="9">
+                                                            <input type="text" name="monto_aprobado" id="monto_aprobado" maxlength="9" class="form-control">
                                                         </div>
                                                     </div>                                                           
                                                 </div>                                              
@@ -334,7 +337,7 @@
                                         <div class="tab-pane" id="address">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <div><h4 class="info-text"><u> Area fisica ambiental </u></h4></div>
+                                                    <div><h4 class="info-text"><u>Area fisica ambiental</u></h4></div>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <div class="input-group">
@@ -343,7 +346,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Tipo de Vivienda</label>
-                                                            <select name="tipo_vivienda" class="form-control" id="tipo_vivienda">
+                                                            <select name="tipo_vivienda" id="tipo_vivienda" class="form-control">
                                                                 <option disabled="" selected=""></option>
                                                                 <option value="Quinta">Quinta</option>
                                                                 <option value="Apartamento">Apartamento</option>
@@ -360,7 +363,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Tenencia</label>
-                                                            <select name="tenencia" class="form-control" id="tenencia">
+                                                            <select name="tenencia" id="tenencia" class="form-control">
                                                                 <option disabled="" selected=""></option>
                                                                 <option value="Propia">Propia</option>
                                                                 <option value="Alquilada">Alquilada</option>
@@ -377,7 +380,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Construccion</label>
-                                                            <select name="construccion" class="form-control" id="construccion">
+                                                            <select name="construccion" id="construccion" class="form-control">
                                                                 <option disabled="" selected=""></option>
                                                                 <option value="Bloque">Bloque</option>
                                                                 <option value="Bahareque">Bahareque</option>
@@ -394,7 +397,7 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Tipo de Piso</label>
-                                                            <select name="tipo_piso" class="form-control" id="tipo_piso">
+                                                            <select name="tipo_piso" id="tipo_piso" class="form-control">
                                                                 <option disabled="" selected=""></option>
                                                                 <option value="Granito">Granito</option>
                                                                 <option value="Cerámica">Cerámica</option>
@@ -420,7 +423,7 @@
                                                         <th>Observacion</th>                              
                                                       </thead>
                                                       <tbody>
-                                                                  
+                                                        <!-- LA funcion de Familiares de Java Actua -->
                                                       </tbody>                 
                                                     </table>
                                                 </div>
@@ -430,7 +433,7 @@
                                     <div class="wizard-footer">
                                         <div class="pull-right">
                                             <input type='button' class='btn btn-next btn-fill btn-warning btn-wd' name='next' value='Next' />
-                                            <input type='button' class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finish' />
+                                            <input type='submit' class='btn btn-finish btn-fill btn-success btn-wd' />
                                         </div>
                                         <div class="pull-left">
                                             <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />

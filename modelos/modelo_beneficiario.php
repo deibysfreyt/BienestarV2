@@ -18,11 +18,11 @@
 			parent::__construct();
 		}
 
-		public function setIdBeneficiario($id_beneficiario){
+		public function setId_beneficiario($id_beneficiario){
 			$this->id_beneficiario = $id_beneficiario;
 		}
 
-		public function setIdSolicitante($id_solicitante){
+		public function setId_solicitante($id_solicitante){
 			$this->id_solicitante = $id_solicitante;
 		}
 
@@ -49,8 +49,7 @@
 			$stmt->bindParam(":fecha_nacimiento", limpiarCadena($this->fecha_nacimiento), PDO::PARAM_STR);
 
 			$stmt->execute();
-
-			return $stmt->lastInsertId();
+			return C_conexion::getConexion()->lastInsertId();
 
 			$stmt->clouse();
 

@@ -5,21 +5,25 @@
 
 	require_once("modelo_conexion.php");
 
-	class AreaFisica extends C_conexion
+	class Familiar extends C_conexion
 	{
-		private $id_area_fisica,
-				$tipo_vivienda,
-				$tenencia,
-				$construccion,
-				$tipo_piso;
+		private $id_familiar_solicitud,
+				$id_familiar,
+				$id_solicitud,
+				$id_familiar,
+				$nombre_apellido,
+				$edad,
+				$parentesco,
+				$ocupacion,
+				$observacion;
 		
 		function __construct()
 		{
 			parent::__construct();
 		}
 
-		public function setId_area_fisica($id_area_fisica){
-			$this->id_area_fisica = $id_area_fisica;
+		public function setid_familiar_solicitud($id_familiar_solicitud){
+			$this->id_familiar_solicitud = $id_familiar_solicitud;
 		}
 
 		public function setTipo_vivienda($tipo_vivienda){
@@ -30,26 +34,27 @@
 			$this->tenencia = $tenencia;
 		}
 
-		public function setConstruccion($construccion){
-			$this->construccion = $construccion;
+		public function setid_familiar($id_familiar){
+			$this->id_familiar = $id_familiar;
 		}
 
-		public function setTipo_piso($tipo_piso){
-			$this->tipo_piso = $tipo_piso;
+		public function setnombre_apellido($nombre_apellido){
+			$this->nombre_apellido = $nombre_apellido;
 		}
 		
 
 		public function insertarAF() {
 
-			$stmt = C_conexion::getConexion()->prepare("INSERT INTO area_fisica (tipo_vivienda,tenencia,construccion,tipo_piso) VALUES (:tipo_vivienda,:tenencia,:construccion,:tipo_piso)");
+			$stmt = C_conexion::getConexion()->prepare("INSERT INTO area_fisica (tipo_vivienda,tenencia,id_familiar,nombre_apellido) VALUES (:tipo_vivienda,:tenencia,:id_familiar,:nombre_apellido)");
 
 			$stmt->bindParam(":tipo_vivienda", limpiarCadena($this->tipo_vivienda), PDO::PARAM_STR);
 			$stmt->bindParam(":tenencia", limpiarCadena($this->tenencia), PDO::PARAM_STR);
-			$stmt->bindParam(":construccion", limpiarCadena($this->construccion), PDO::PARAM_STR);
-			$stmt->bindParam(":tipo_piso", limpiarCadena($this->tipo_piso), PDO::PARAM_STR);
+			$stmt->bindParam(":id_familiar", limpiarCadena($this->id_familiar), PDO::PARAM_STR);
+			$stmt->bindParam(":nombre_apellido", limpiarCadena($this->nombre_apellido), PDO::PARAM_STR);
 
 			$stmt->execute();
-			return C_conexion::getConexion()->lastInsertId();
+
+			return $stmt->lastInsertId();
 
 			$stmt->clouse();
 

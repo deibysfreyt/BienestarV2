@@ -15,7 +15,7 @@
 				$tlf_movil,
 				$tlf_fijo,
 				$parroquia,
-				$ocupacion
+				$ocupacion,
 				$ingreso,
 				$estado_civil;
 
@@ -25,7 +25,7 @@
 			parent::__construct();
 		}
 
-		public function setIdSolicitante($id_solicitante){
+		public function setId_Solicitante($id_solicitante){
 			$this->id_solicitante = $id_solicitante;
 		}
 
@@ -86,8 +86,7 @@
 			$stmt->bindParam(":estado_civil", limpiarCadena($this->estado_civil), PDO::PARAM_STR);
 
 			$stmt->execute();
-
-			return $stmt->lastInsertId();
+			return C_conexion::getConexion()->lastInsertId();
 
 			$stmt->clouse();
 

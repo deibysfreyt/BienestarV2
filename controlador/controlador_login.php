@@ -8,7 +8,7 @@
 	  	if(isset($_POST["username"])){
 
 
-	  		if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["username"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["password"])) {
+	  		if (preg_match('/[a-zA-Z0-9]/', $_POST["username"]) && preg_match('/[a-zA-Z0-9]/', $_POST["password"])) {
 
 	  			$login = new Login();
 
@@ -19,11 +19,15 @@
 
 	  			if ($respuesta["condicion"]) {
 
+	  				header('Status: 301 Moved Permanently', false, 301);
 					header("location:index");
+					exit();
 
 				}else{
 					
+					header('Status: 301 Moved Permanently', false, 301);
 					header("location:index.php");
+					exit();
 				
 		  		}
 

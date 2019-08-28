@@ -5,7 +5,7 @@
 
 	require_once("modelo_conexion.php");
 
-	class AreaFisica extends C_conexion
+	class AreaMedica extends C_conexion
 	{
 		private $id_area_medica,
 				$id_solicitud,
@@ -20,7 +20,7 @@
 			parent::__construct();
 		}
 
-		public function setId_Area_fisica($id_area_medica){
+		public function setId_area_medica($id_area_medica){
 			$this->id_area_medica = $id_area_medica;
 		}
 
@@ -36,7 +36,7 @@
 			$this->motivo_solicitud = $motivo_solicitud;
 		}
 
-		public function setRecursos_disponible($recursos_disponibles){
+		public function setRecursos_disponibles($recursos_disponibles){
 			$this->recursos_disponibles = $recursos_disponibles;
 		}
 
@@ -44,8 +44,8 @@
 			$this->monto_aprobado = $monto_aprobado;
 		}
 
-		public function setObservacion($observacion){
-			$this->observacion = $observacion;
+		public function setObservacion($observacion_am){
+			$this->observacion = $observacion_am;
 		}
 
 		public function insertarAM() {

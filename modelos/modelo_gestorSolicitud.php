@@ -45,8 +45,8 @@
 			$stmt->bindParam(":condicion", limpiarCadena($this->condicion), PDO::PARAM_INT);
 
 			return $stmt->execute();
-			$stmt->clouse();
 
+			$stmt->clouse();
 		}
 
 		public function listarGS(){

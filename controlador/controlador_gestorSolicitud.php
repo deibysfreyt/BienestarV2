@@ -34,9 +34,12 @@
 
 					$tipo_solicitud = $gestorSolicitud->insertarGS();
 
+					
 					if ($tipo_solicitud) {
 
+						header('Status: 301 Moved Permanently', false, 301);
 						header("location:tablaSolicitud");
+						exit();
 						
 					}
 				}
@@ -54,7 +57,9 @@
 
 					if ($tipo_solicitud) {
 
+						header('Status: 301 Moved Permanently', false, 301);
 						header("location:tablaSolicitud");
+						exit();
 						
 					}
 				}		

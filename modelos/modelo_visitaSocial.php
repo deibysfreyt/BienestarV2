@@ -5,51 +5,44 @@
 
 	require_once("modelo_conexion.php");
 
-	class AreaFisica extends C_conexion
+	class VisitaSocial extends C_conexion
 	{
-		private $id_area_fisica,
-				$tipo_vivienda,
-				$tenencia,
-				$construccion,
-				$tipo_piso;
+		private $id_visita_social,
+				$id_solicitud,
+				$observacion,
+				$fecha;
 		
 		function __construct()
 		{
 			parent::__construct();
 		}
 
-		public function setId_area_fisica($id_area_fisica){
-			$this->id_area_fisica = $id_area_fisica;
+		public function setId_Visita_Social($id_visita_social){
+			$this->id_visita_social = $id_visita_social;
 		}
 
-		public function setTipo_vivienda($tipo_vivienda){
-			$this->tipo_vivienda = $tipo_vivienda;
+		public function setId_solicitud($id_solicitud){
+			$this->id_solicitud = $id_solicitud;
 		}
 
-		public function setTenencia($tenencia){
-			$this->tenencia = $tenencia;
+		public function setObservacion($observacion){
+			$this->observacion = $observacion;
 		}
 
-		public function setConstruccion($construccion){
-			$this->construccion = $construccion;
-		}
-
-		public function setTipo_piso($tipo_piso){
-			$this->tipo_piso = $tipo_piso;
+		public function setFecha($fecha){
+			$this->fecha = $fecha;
 		}
 		
 
-		public function insertarAF() {
+		public function insertarVS() {
 
-			$stmt = C_conexion::getConexion()->prepare("INSERT INTO area_fisica (tipo_vivienda,tenencia,construccion,tipo_piso) VALUES (:tipo_vivienda,:tenencia,:construccion,:tipo_piso)");
+			$stmt = C_conexion::getConexion()->prepare("INSERT INTO visita_social (id_solicitud,observacion,fecha) VALUES (:id_solicitud,:observacion,:fecha)");
 
-			$stmt->bindParam(":tipo_vivienda", limpiarCadena($this->tipo_vivienda), PDO::PARAM_STR);
-			$stmt->bindParam(":tenencia", limpiarCadena($this->tenencia), PDO::PARAM_STR);
-			$stmt->bindParam(":construccion", limpiarCadena($this->construccion), PDO::PARAM_STR);
-			$stmt->bindParam(":tipo_piso", limpiarCadena($this->tipo_piso), PDO::PARAM_STR);
+			$stmt->bindParam(":id_solicitud", limpiarCadena($this->id_solicitud), PDO::PARAM_STR);
+			$stmt->bindParam(":observacion", limpiarCadena($this->observacion), PDO::PARAM_STR);
+			$stmt->bindParam(":fecha", limpiarCadena($this->fecha), PDO::PARAM_STR);
 
-			$stmt->execute();
-			return C_conexion::getConexion()->lastInsertId();
+			return $stmt->execute();
 
 			$stmt->clouse();
 
