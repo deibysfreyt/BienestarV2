@@ -21,6 +21,16 @@
 		require_once("modelos/modelo_areaMedica.php");
 		$areaMedica = new AreaMedica();
 
+		//Preguntamos si la variable esta definida o declarada, es decir que no sea NULL
+		if (isset($_GET["id"])) {
+
+			if (preg_match('/^[[:digit:]]+$/', $_GET["id"])) {
+
+				$id = (int)$_GET["id"];
+				$datos = $solicitud->mostrarSB($id);
+			}
+		}
+
 		if (isset($_POST["id_solicitud"])) {
 			
 			$id_solicitud = limpiarCadena($_POST["id_solicitud"]);
@@ -74,11 +84,8 @@
 					$solicitud->setEstado($_POST["estado"]);
 
 					$idSolicitud = $solicitud->insertarSlt();
-
-					if (empty($idSolicitud)) {
-						$pagina = true;
-					}
-
+					
+					
 					// Area Medica
 					if (isset($_POST["diagnostico"])) {
 
@@ -93,23 +100,12 @@
 					}
 
 					// Familiares
-
-					if ($pagina) {
-						header('Status: 301 Moved Permanently', false, 301);
-						header("Location:index");
-						exit();
-					}
+					header("Location:consultaSolicitud");
 					
-						
+					exit;
+					
 				}
 
-			}else{
-				echo "!!!!!..... NO ENTRO....!!!!!";
-				header('Status: 301 Moved Permanently', false, 301);
-				header("Location:index");
-				//header("location:solicitud");
-				exit();
-					
 			}
 		}
 

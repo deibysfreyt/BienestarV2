@@ -43,7 +43,7 @@
 		}
 		
 
-		public function insertarAF() {
+		public function insertarF() {
 
 			$stmt = C_conexion::getConexion()->prepare("INSERT INTO area_fisica (tipo_vivienda,tenencia,id_familiar,nombre_apellido) VALUES (:tipo_vivienda,:tenencia,:id_familiar,:nombre_apellido)");
 

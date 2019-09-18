@@ -27,12 +27,6 @@
 			return $this->conexion;
 		}
 
-		/*public function ejecutarConsulta($sql){
-			$query = $this->getConexion()->query($sql);
-			return $query;
-		}*/
-
-
 	}
 
 	function limpiarCadena($str){

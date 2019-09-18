@@ -1,8 +1,4 @@
-<?php 
-	/**
-	 * cedulaes
-	 */
-
+<?php
 	require_once("modelo_conexion.php");
 
 	class Solicitud extends C_conexion
@@ -53,7 +49,7 @@
 			$this->estado = $estado;
 		}
 
-		public function insertarSlt() {
+		public function insertarSlt(){
 
 			$stmt = C_conexion::getConexion()->prepare("INSERT INTO solicitud (id_usuario,id_beneficiario,id_tipo_solicitud,id_area_fisica,fecha,semana_embarazo,estado) VALUES (:id_usuario,:id_beneficiario,:id_tipo_solicitud,:id_area_fisica,:fecha,:semana_embarazo,:estado)");
 
@@ -67,27 +63,20 @@
 
 			$stmt->execute();
 			return C_conexion::getConexion()->lastInsertId();
-
 			$stmt->clouse();
-
 		}
 
-		/*
+		public function listarD(){
 
-		public function listarGS(){
-			
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM tipo_cedula");
-			
+			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM datos_s_b");
 			$stmt->execute();
-
 			return $stmt->fetchAll();
-			
 			$stmt->clouse();
 		}
 
-		public function mostrarGS($id){
+		public function mostrarSB($id){
 			
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM tipo_cedula WHERE id_solicitante = :id");
+			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM mostrar_s_b WHERE id_solicitante = :id");
 			
 			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
@@ -97,35 +86,4 @@
 
 			$stmt->close();
 		}
-
-		public function actualizarGS(){
-			
-			$stmt = C_conexion::getConexion()->prepare("UPDATE tipo_cedula SET cedula = :cedula, nombre_apellido = :nombre_apellido , fecha_nacimiento = :fecha_nacimiento WHERE id_solicitante = :id_solicitante");
-
-			$stmt->bindParam(":cedula", limpiarCadena($this->cedula), PDO::PARAM_STR);
-			$stmt->bindParam(":nombre_apellido", limpiarCadena($this->nombre_apellido), PDO::PARAM_STR);
-			$stmt->bindParam(":fecha_nacimiento", limpiarCadena($this->fecha_nacimiento), PDO::PARAM_INT);
-			$stmt->bindParam(":id_solicitante", $this->id_solicitante, PDO::PARAM_INT);
-
-			return $stmt->execute();
-			$stmt->clouse();
-		}
-
-		public function seleccionarGS(){
-
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM tipo_cedula WHERE fecha_nacimiento = true");
-
-			$stmt->execute();
-
-			return $stmt->fetchAll();
-
-			$stmt->clouse();
-		}
-
-		*/
 	}
-
-
-
-
-

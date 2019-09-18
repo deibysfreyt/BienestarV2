@@ -128,6 +128,9 @@
                                 <li>
                                     <a href="solicitud">Solicitud</a>
                                 </li>
+                                <li>
+                                    <a href="consultaSolicitud">Consulta de Solicitud</a>
+                                </li>
                             </ul>
                         </div>
                     </li>

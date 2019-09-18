@@ -1,6 +1,6 @@
 <?php require_once("header.php") ?>
 
-	<div class="main-panel">
+    <div class="main-panel">
             <nav class="navbar navbar-transparent navbar-absolute">
                 <div class="container-fluid">
                     <div class="navbar-minimize">
@@ -24,13 +24,13 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                    	<div class="box-header with-border" style="margin-top: -40px;">
-                			<!-- Bonton para mostrar el formulario -->
-			            	<a href="gestorSolicitud"><button class="btn btn-rose btn-round" id="btnagregar">
-			              		<i class="fa fa-plus-circle"></i> Agregar Nueva Solicitudes
-			            	</button></a>
-			            	<div class="box-tools pull-right"></div>
-			          	</div>                       
+                        <div class="box-header with-border" style="margin-top: -40px;">
+                            <!-- Bonton para mostrar el formulario -->
+                            <a href="solicitud"><button class="btn btn-rose btn-round" id="btnagregar">
+                                <i class="fa fa-plus-circle"></i> Crear Nueva Solicitud
+                            </button></a>
+                            <div class="box-tools pull-right"></div>
+                        </div>                       
                         <div class="col-md-12" id="listadoregistros">
                             <div class="card">
                                 <div class="card-header card-header-icon" data-background-color="purple">
@@ -45,46 +45,46 @@
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th><b>Nombre</b></th>
-                                                    <th><b>Descripción</b></th>
-                                                    <th><b>Estado</b></th>                                                    
+                                                    <th><b>.CI.</b></th>
+                                                    <th><b>Solicitante</b></th>
+                                                    <th><b>Beneficiario</b></th>                                                    
                                                     <th class="disabled-sorting text-right"><b>Opciones</b></th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Nombre</th>
-                                                    <th>Descripción</th>
-                                                    <th>Estado</th>
+                                                    <th><b>.CI.</b></th>
+                                                    <th><b>Solicitante</b></th>
+                                                    <th><b>Beneficiario</b></th>
                                                     <th class="text-right">Opciones</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
                                                 <?php
                                                     //Listamos todo los datos para mostrarlo en el DATA TABLE
-                                                    $resp=$gestorSolicitud->listarGS();
+                                                    $resp=$solicitud->listarD();
                                                             
                                                     foreach ($resp as $row => $item) {
-
+                                                        /*
                                                         if($item["condicion"]) { 
                                                             $icono = "check_circle";
                                                             $tipo = "success";
                                                         }else{
                                                             $icono = "remove_circle";
                                                             $tipo = "warning";
-                                                        }                                                                
+                                                        } */
+                                                            $icono = "check_circle";
+                                                            $tipo = "success";                                                             
                                                             echo '<tr>
-                                                                    <td>'.$item["solicitud"].'</td>
-                                                                    <td>'.$item["descripcion"].'</td>
-                                                                    <td>
-                                                                        <a href="#" class="btn btn-simple btn-'.$tipo.' btn-icon"><i class="material-icons">'.$icono.'</i></a>
-                                                                    </td>
+                                                                    <td>'.$item["cedula"].'</td>
+                                                                    <td>'.$item["solicitante"].'</td>
+                                                                    <td>'.$item["beneficiario"].'</td>
                                                                     <td class="text-right">
-                                                                        <a href="index.php?do=gestorSolicitud&id='.$item["id_tipo_solicitud"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
+                                                                        <a href="index.php?do=solicitud&id='.$item["id_s"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
                                                                     </td>
                                                                 </tr>';                                                         
                                                     }//fin del foreach                                        
-
+                                                    
                                                  ?>
                                             </tbody>
                                         </table>

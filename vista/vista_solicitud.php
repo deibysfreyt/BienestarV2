@@ -72,8 +72,8 @@
                                                             <label class="control-label">Cedula
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input name="cedula" type="text" class="form-control" id="cedula" maxlength="8">
-                                                            <input type="hidden" name="id_solicitante" id="id_solicitante">
+                                                            <input name="cedula" type="text" class="form-control" id="cedula" maxlength="8" value="<?php if(isset($datos["cedula"])){ echo trim($datos["cedula"]); } ?>">
+                                                            <input type="hidden" name="id_solicitante" id="id_solicitante" value="<?php if(isset($datos["id_solicitante"])){ echo $datos["id_solicitante"]; } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
@@ -243,7 +243,7 @@
                                                                 <option value="" selected=""></option> 
                                                                 <?php
                                                                     for ($i=0; $i <= 42; $i++) { 
-                                                                        echo '<option value=$i>'.$i."</option>";
+                                                                        echo '<option value="'.$i.'">'.$i."</option>";
                                                                     }
                                                                 ?>
                                                             </select>

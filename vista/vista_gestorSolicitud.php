@@ -61,7 +61,7 @@
                                             <star>*</star> Archivos Requeridos </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-rose btn-fill btn-wd"> <?php if (isset($tipo_solicitud["id_tipo_solicitud"])) { echo 'Actualizar';}else{ echo 'Registrar';} ?> </button>
-                                            <a href="index.php?do=tablaSolicitud"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
+                                            <a href="tablaSolicitud"><button class="btn btn-danger" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button></a>
                                         </div>
                                     </div>
                                 </form>
