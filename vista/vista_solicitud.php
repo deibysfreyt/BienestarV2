@@ -38,11 +38,11 @@
                                             Build Your Profile
                                         </h3>
                                         <h5>This information will let us know more about you.</h5>
-                                        <label class="control-label">Fecha de Solicitud:</label>
-                                        <input name="fecha" type="date" style="border: 0" id="fecha">
-                                        <label class="control-label">Estado de Solicitud:</label>
+                                        <label class="control-label" style="color: red;"><b>Fecha de Solicitud:</b></label>
+                                        <input name="fecha" type="date" style="border: 0; font-weight: bold;" id="fecha">
+                                        <label class="control-label" style="color: red;"><b>Estado de Solicitud:</b></label>
                                         <input type="hidden" name="id_solicitud" id="id_solicitud">
-                                        <select name="estado" id="estado" style="border: 0">
+                                        <select name="estado" id="estado" style="border: 0; background-color: orange; font-weight: bold;">
                                             <option value="En espera" selected="">En espera</option>
                                             <option value="Aprobado">Aprobado</option>             
                                         </select>
@@ -84,7 +84,7 @@
                                                             <label class="control-label">Telefono Movil
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input type="text" name="tlf_movil" id="tlf_movil" maxlength="11" class="form-control">
+                                                            <input type="text" name="tlf_movil" id="tlf_movil" maxlength="11" class="form-control" value="<?php if(isset($datos["tlf_movil"])){ echo trim($datos["tlf_movil"]); } ?>">
                                                         </div>
                                                     </div>
                                                      <div class="input-group">
@@ -94,7 +94,7 @@
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Ocupacion  
                                                             </label>
-                                                            <input type="text" name="ocupacion" id="ocupacion" maxlength="45" class="form-control">
+                                                            <input type="text" name="ocupacion" id="ocupacion" maxlength="45" class="form-control" value="<?php if(isset($datos["ocupacion"])){ echo trim($datos["ocupacion"]); } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -107,7 +107,7 @@
                                                             <label class="control-label">Nombre y Apellido
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input type="text" name="nombre_apellido" id="nombre_apellido" maxlength="45" class="form-control">
+                                                            <input type="text" name="nombre_apellido" id="nombre_apellido" maxlength="45" class="form-control" value="<?php if(isset($datos["nombre_apellido"])){ echo trim($datos["nombre_apellido"]); } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
@@ -117,7 +117,7 @@
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Telefono Fijo  
                                                             </label>
-                                                            <input type="text" name="tlf_fijo" id="tlf_fijo" maxlength="11" class="form-control">
+                                                            <input type="text" name="tlf_fijo" id="tlf_fijo" maxlength="11" class="form-control" value="<?php if(isset($datos["tlf_fijo"])){ echo trim($datos["tlf_fijo"]); } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
@@ -127,7 +127,7 @@
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Ingresos Bs.
                                                             </label>
-                                                            <input type="text" name="ingreso" id="ingreso" maxlength="9" class="form-control">
+                                                            <input type="text" name="ingreso" id="ingreso" maxlength="9" class="form-control" value="<?php if(isset($datos["ingreso"])){ echo trim($datos["ingreso"]); } ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -137,7 +137,7 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control">
+                                                            <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" value="<?php if(isset($datos["fecha_nacimiento"])){ echo trim($datos["fecha_nacimiento"]); } ?>">
                                                         </div>
                                                     </div>
                                                     <div class="input-group">
@@ -147,7 +147,7 @@
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Estado Civil</label>
                                                             <select name="estado_civil" id="estado_civil" class="form-control">
-                                                                <option disabled="" selected=""></option>
+                                                                <option value="<?php if(isset($datos["estado_civil"])){ echo trim($datos["estado_civil"]); } ?>" <?php if(isset($datos["estado_civil"])){ echo 'selected=""'; echo 'disable=""'; } ?> > <?php if(isset($datos["estado_civil"])){ echo trim($datos["estado_civil"]); } ?></option>
                                                                 <option value="Soltera(o)">Soltera(o)</option>
                                                                 <option value="Casada(o)">Casada(o)</option>
                                                                 <option value="Divorciada(o)">Divorciada(o)</option>
@@ -164,7 +164,7 @@
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Parroquia</label>
                                                             <select name="parroquia" id="parroquia" class="form-control">
-                                                                <option disabled="" selected=""></option>
+                                                                <option value="<?php if(isset($datos["parroquia"])){ echo trim($datos["parroquia"]); } ?>" <?php if(isset($datos["parroquia"])){ echo 'selected=""'; echo 'disable=""'; } ?> > <?php if(isset($datos["parroquia"])){ echo trim($datos["parroquia"]); } ?></option>
                                                                 <option value="Buena Vista">Buena Vista</option>
                                                                 <option value="Catedral">Catedral</option>
                                                                 <option value="Concepció">Concepción</option>
@@ -189,7 +189,7 @@
                                                             <label class="control-label">Direccion de Habitacion
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input type="text" name="direccion" id="direccion" maxlength="100" class="form-control">
+                                                            <input type="text" name="direccion" id="direccion" maxlength="100" class="form-control" value="<?php if(isset($datos["direccion"])){ echo trim($datos["direccion"]); } ?>">
                                                         </div>
                                                     </div>
                                                 </div>                                      
@@ -204,8 +204,8 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Cedula</label>
-                                                            <input type="text" name="cedula_b" id="cedula_b" maxlength="8" class="form-control">
-                                                            <input type="hidden" name="id_beneficiario" id="id_beneficiario">
+                                                            <input type="text" name="cedula_b" id="cedula_b" maxlength="8" class="form-control" value="<?php if(isset($datos["cedula_b"])){ echo trim($datos["cedula_b"]); } ?>">
+                                                            <input type="hidden" name="id_beneficiario" id="id_beneficiario" value="<?php if(isset($datos["id_beneficiario"])){ echo trim($datos["id_beneficiario"]); } ?>">
                                                         </div>
                                                     </div>                                               
                                                 </div>
@@ -218,7 +218,7 @@
                                                             <label class="control-label">Nombre y Apellido
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input type="text" name="nombre_apellido_b" id="nombre_apellido_b" maxlength="45" class="form-control">
+                                                            <input type="text" name="nombre_apellido_b" id="nombre_apellido_b" maxlength="45" class="form-control" value="<?php if(isset($datos["nombre_apellido_b"])){ echo trim($datos["nombre_apellido_b"]); } ?>">
                                                         </div>
                                                     </div>                                                   
                                                 </div>
@@ -228,7 +228,7 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <input type="date" name="fecha_nacimiento_b" id="fecha_nacimiento_b" class="form-control">
+                                                            <input type="date" name="fecha_nacimiento_b" id="fecha_nacimiento_b" class="form-control" value="<?php if(isset($datos["fecha_nacimiento_b"])){ echo trim($datos["fecha_nacimiento_b"]); } ?>">
                                                         </div>
                                                     </div>                                                   
                                                 </div>

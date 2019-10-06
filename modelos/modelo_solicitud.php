@@ -52,15 +52,14 @@
 		public function insertarSlt(){
 
 			$stmt = C_conexion::getConexion()->prepare("INSERT INTO solicitud (id_usuario,id_beneficiario,id_tipo_solicitud,id_area_fisica,fecha,semana_embarazo,estado) VALUES (:id_usuario,:id_beneficiario,:id_tipo_solicitud,:id_area_fisica,:fecha,:semana_embarazo,:estado)");
-
 			$stmt->bindParam(":id_usuario", limpiarCadena($this->id_usuario), PDO::PARAM_STR);
 			$stmt->bindParam(":id_beneficiario", limpiarCadena($this->id_beneficiario), PDO::PARAM_STR);
 			$stmt->bindParam(":id_tipo_solicitud", limpiarCadena($this->id_tipo_solicitud), PDO::PARAM_STR);
-			$stmt->bindParam(":id_area_fisica", limpiarCadena($this->id_area_fisica), PDO::PARAM_STR);
-			$stmt->bindParam(":fecha", limpiarCadena($this->fecha), PDO::PARAM_STR);
-			$stmt->bindParam(":semana_embarazo", limpiarCadena($this->semana_embarazo), PDO::PARAM_STR);
-			$stmt->bindParam(":estado", limpiarCadena($this->estado), PDO::PARAM_STR);
-
+			$stmt->bindParam(":id_area_fisica",$this->id_area_fisica);
+			$stmt->bindParam(":fecha",$this->fecha);
+			$stmt->bindParam(":semana_embarazo",$this->semana_embarazo);
+			$stmt->bindParam(":estado",$this->estado);
+			//return $stmt->execute();
 			$stmt->execute();
 			return C_conexion::getConexion()->lastInsertId();
 			$stmt->clouse();

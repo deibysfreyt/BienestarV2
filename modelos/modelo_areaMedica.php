@@ -1,8 +1,4 @@
-<?php 
-	/**
-	 * cedulaes
-	 */
-
+<?php
 	require_once("modelo_conexion.php");
 
 	class AreaMedica extends C_conexion
@@ -48,77 +44,15 @@
 			$this->observacion = $observacion_am;
 		}
 
-		public function insertarAM() {
-
+		public function insertarAM(){
 			$stmt = C_conexion::getConexion()->prepare("INSERT INTO area_medica (id_solicitud,diagnostico,motivo_solicitud,recursos_disponibles,monto_aprobado,observacion) VALUES (:id_solicitud,:diagnostico,:motivo_solicitud,:recursos_disponibles,:monto_aprobado,:observacion)");
-
-			$stmt->bindParam(":id_solicitud", limpiarCadena($this->id_solicitud), PDO::PARAM_STR);
-			$stmt->bindParam(":diagnostico", limpiarCadena($this->diagnostico), PDO::PARAM_STR);
-			$stmt->bindParam(":motivo_solicitud", limpiarCadena($this->motivo_solicitud), PDO::PARAM_STR);
-			$stmt->bindParam(":recursos_disponibles", limpiarCadena($this->recursos_disponibles), PDO::PARAM_STR);
-			$stmt->bindParam(":monto_aprobado", limpiarCadena($this->monto_aprobado), PDO::PARAM_STR);
-			$stmt->bindParam(":observacion", limpiarCadena($this->observacion), PDO::PARAM_STR);
-
-			return $stmt->execute();
-
-			$stmt->clouse();
-
-		}
-
-		/*
-
-		public function listarGS(){
-			
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM tipo_cedula");
-			
-			$stmt->execute();
-
-			return $stmt->fetchAll();
-			
-			$stmt->clouse();
-		}
-
-		public function mostrarGS($id){
-			
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM tipo_cedula WHERE id_solicitante = :id");
-			
-			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
-
-			$stmt->execute();
-
-			return $stmt->fetch();
-
-			$stmt->close();
-		}
-
-		public function actualizarGS(){
-			
-			$stmt = C_conexion::getConexion()->prepare("UPDATE tipo_cedula SET cedula = :cedula, nombre_apellido = :nombre_apellido , fecha_nacimiento = :fecha_nacimiento WHERE id_solicitante = :id_solicitante");
-
-			$stmt->bindParam(":cedula", limpiarCadena($this->cedula), PDO::PARAM_STR);
-			$stmt->bindParam(":nombre_apellido", limpiarCadena($this->nombre_apellido), PDO::PARAM_STR);
-			$stmt->bindParam(":fecha_nacimiento", limpiarCadena($this->fecha_nacimiento), PDO::PARAM_INT);
-			$stmt->bindParam(":id_solicitante", $this->id_solicitante, PDO::PARAM_INT);
-
+			$stmt->bindParam(":id_solicitud",limpiarCadena($this->id_solicitud));
+			$stmt->bindParam(":diagnostico",limpiarCadena($this->diagnostico),PDO::PARAM_STR);
+			$stmt->bindParam(":motivo_solicitud",limpiarCadena($this->motivo_solicitud),PDO::PARAM_STR);
+			$stmt->bindParam(":recursos_disponibles",limpiarCadena($this->recursos_disponibles),PDO::PARAM_STR);
+			$stmt->bindParam(":monto_aprobado",limpiarCadena($this->monto_aprobado),PDO::PARAM_STR);
+			$stmt->bindParam(":observacion",limpiarCadena($this->observacion),PDO::PARAM_STR);
 			return $stmt->execute();
 			$stmt->clouse();
 		}
-
-		public function seleccionarGS(){
-
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM tipo_cedula WHERE fecha_nacimiento = true");
-
-			$stmt->execute();
-
-			return $stmt->fetchAll();
-
-			$stmt->clouse();
-		}
-
-		*/
 	}
-
-
-
-
-

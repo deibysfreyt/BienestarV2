@@ -43,16 +43,15 @@
 
 			$stmt = C_conexion::getConexion()->prepare("INSERT INTO area_fisica (tipo_vivienda,tenencia,construccion,tipo_piso) VALUES (:tipo_vivienda,:tenencia,:construccion,:tipo_piso)");
 
-			$stmt->bindParam(":tipo_vivienda", limpiarCadena($this->tipo_vivienda), PDO::PARAM_STR);
-			$stmt->bindParam(":tenencia", limpiarCadena($this->tenencia), PDO::PARAM_STR);
-			$stmt->bindParam(":construccion", limpiarCadena($this->construccion), PDO::PARAM_STR);
-			$stmt->bindParam(":tipo_piso", limpiarCadena($this->tipo_piso), PDO::PARAM_STR);
+			$stmt->bindParam(":tipo_vivienda",limpiarCadena($this->tipo_vivienda),PDO::PARAM_STR);
+			$stmt->bindParam(":tenencia",limpiarCadena($this->tenencia),PDO::PARAM_STR);
+			$stmt->bindParam(":construccion",limpiarCadena($this->construccion),PDO::PARAM_STR);
+			$stmt->bindParam(":tipo_piso",limpiarCadena($this->tipo_piso),PDO::PARAM_STR);
 
 			$stmt->execute();
 			return C_conexion::getConexion()->lastInsertId();
 
 			$stmt->clouse();
-
 		}
 
 		/*
