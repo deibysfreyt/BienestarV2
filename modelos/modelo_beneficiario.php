@@ -19,7 +19,7 @@
 		}
 
 		public function setId_beneficiario($id_beneficiario){
-			$this->id_beneficiario = $id_beneficiario;
+			$this->id_beneficiario = limpiarCadena($id_beneficiario);
 		}
 
 		public function setId_solicitante($id_solicitante){
@@ -53,6 +53,17 @@
 
 			$stmt->clouse();
 
+		}
+
+		public function actualizarB(){
+			$stmt = C_conexion::getConexion()->prepare("UPDATE beneficiario SET id_solicitante= :id_solicitante,cedula= :cedula,nombre_apellido= :nombre_apellido,fecha_nacimiento= :fecha_nacimiento WHERE id_beneficiario = :id_beneficiario");
+			$stmt->bindParam(":id_solicitante", limpiarCadena($this->id_solicitante), PDO::PARAM_STR);
+			$stmt->bindParam(":cedula", limpiarCadena($this->cedula), PDO::PARAM_STR);
+			$stmt->bindParam(":nombre_apellido", limpiarCadena($this->nombre_apellido), PDO::PARAM_STR);
+			$stmt->bindParam(":fecha_nacimiento", limpiarCadena($this->fecha_nacimiento), PDO::PARAM_STR);
+			$stmt->bindParam(":id_beneficiario",$this->id_beneficiario);
+
+			return $stmt->execute();
 		}
 
 		/*

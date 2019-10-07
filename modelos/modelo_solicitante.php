@@ -26,7 +26,7 @@
 		}
 
 		public function setId_Solicitante($id_solicitante){
-			$this->id_solicitante = $id_solicitante;
+			$this->id_solicitante = limpiarCadena($id_solicitante);
 		}
 
 		public function setCedula($cedula){
@@ -90,6 +90,24 @@
 
 			$stmt->clouse();
 
+		}
+
+		public function actualizarS(){
+			$stmt = C_conexion::getConexion()->prepare("UPDATE solicitante SET cedula= :cedula,nombre_apellido= :nombre_apellido,fecha_nacimiento= :fecha_nacimiento,direccion= :direccion,tlf_movil= :tlf_movil,tlf_fijo= :tlf_fijo,parroquia= :parroquia,ocupacion= :ocupacion,ingreso= :ingreso,estado_civil= :estado_civil WHERE id_solicitante = :id_solicitante");
+
+			$stmt->bindParam(":cedula", limpiarCadena($this->cedula), PDO::PARAM_STR);
+			$stmt->bindParam(":nombre_apellido", limpiarCadena($this->nombre_apellido), PDO::PARAM_STR);
+			$stmt->bindParam(":fecha_nacimiento", limpiarCadena($this->fecha_nacimiento), PDO::PARAM_STR);
+			$stmt->bindParam(":direccion", limpiarCadena($this->direccion), PDO::PARAM_STR);
+			$stmt->bindParam(":tlf_movil", limpiarCadena($this->tlf_movil), PDO::PARAM_STR);
+			$stmt->bindParam(":tlf_fijo", limpiarCadena($this->tlf_fijo), PDO::PARAM_STR);
+			$stmt->bindParam(":parroquia", limpiarCadena($this->parroquia), PDO::PARAM_STR);
+			$stmt->bindParam(":ocupacion", limpiarCadena($this->ocupacion), PDO::PARAM_STR);
+			$stmt->bindParam(":ingreso", limpiarCadena($this->ingreso), PDO::PARAM_STR);
+			$stmt->bindParam(":estado_civil", limpiarCadena($this->estado_civil), PDO::PARAM_STR);
+			$stmt->bindParam("id_solicitante",$this->id_solicitante);
+
+			return $stmt->execute();
 		}
 
 		/*

@@ -73,11 +73,11 @@
 			$stmt->clouse();
 		}
 
-		public function mostrarSB($id){
+		public function mostrarSB($id_b){
 			
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM mostrar_s_b WHERE id_solicitante = :id");
+			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM mostrar_s_b WHERE id_beneficiario = :id_b");
 			
-			$stmt->bindParam(":id", $id, PDO::PARAM_INT);
+			$stmt->bindParam(":id_b", $id_b, PDO::PARAM_INT);
 
 			$stmt->execute();
 

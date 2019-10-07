@@ -46,7 +46,7 @@
                                             <thead>
                                                 <tr>
                                                     <th><b>.CI.</b></th>
-                                                    <th><b>Solicitante</b></th>
+                                                    <th>&nbsp;<b>Solicitante</b></th>
                                                     <th><b>Beneficiario</b></th>                                                    
                                                     <th class="disabled-sorting text-right"><b>Opciones</b></th>
                                                 </tr>
@@ -54,7 +54,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <th><b>.CI.</b></th>
-                                                    <th><b>Solicitante</b></th>
+                                                    <th><b>&nbsp;Solicitante</b></th>
                                                     <th><b>Beneficiario</b></th>
                                                     <th class="text-right">Opciones</th>
                                                 </tr>
@@ -77,10 +77,10 @@
                                                             $tipo = "success";                                                             
                                                             echo '<tr>
                                                                     <td>'.$item["cedula"].'</td>
-                                                                    <td>'.$item["solicitante"].'</td>
+                                                                    <td><a href="index.php?do=solicitud&id='.$item["id_s"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">account_circle</i></a>'.$item["solicitante"].'</td>
                                                                     <td>'.$item["beneficiario"].'</td>
                                                                     <td class="text-right">
-                                                                        <a href="index.php?do=solicitud&id='.$item["id_s"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
+                                                                        <a href="index.php?do=solicitud&id='.$item["id_b"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
                                                                     </td>
                                                                 </tr>';                                                         
                                                     }//fin del foreach                                        
