@@ -13,10 +13,16 @@
 		require_once("modelos/modelo_".$action.".php");
 		$solicitud = new Solicitud();
 		//Preguntamos si la variable esta definida o declarada, es decir que no sea NULL
-		if (isset($_GET["id"])) {
-			if (preg_match('/^[[:digit:]]+$/', $_GET["id"])) {
-				$id_b = (int)$_GET["id"];
-				$datos = $solicitud->mostrarSB($id_b);
+		if (isset($_GET["id_s"])) {
+			if (preg_match('/^[[:digit:]]+$/', $_GET["id_s"])) {
+				$id_s = (int)$_GET["id_s"];
+				$datos = $solicitud->mostrarS($id_s);
+			}
+		}
+		if (isset($_GET["id_sb"])) {
+			if (preg_match('/^[[:digit:]]+$/', $_GET["id_sb"])) {
+				$id_sb = (int)$_GET["id_sb"];
+				$datos = $solicitud->mostrarSB($id_sb);
 			}
 		}
 		if (isset($_POST["id_solicitud"])) {
