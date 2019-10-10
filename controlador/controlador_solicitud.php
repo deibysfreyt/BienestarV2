@@ -10,6 +10,10 @@
 		$areaFisica = new AreaFisica();
 		require_once("modelos/modelo_areaMedica.php");
 		$areaMedica = new AreaMedica();
+		require_once("modelos/modelo_familiar.php");
+		$familiar = new Familiar();
+		require_once("modelo/modelo_familiar_solicitud.php");
+		$familiarSolicitud = new FamiliarSolicitud();
 		require_once("modelos/modelo_".$action.".php");
 		$solicitud = new Solicitud();
 		//Preguntamos si la variable esta definida o declarada, es decir que no sea NULL
@@ -119,6 +123,36 @@
 					$areaMedica->setMonto_aprobado($_POST["monto_aprobado"]);
 					$areaMedica->setObservacion($_POST["observacion_am"]);
 					$AreasMedicas = $areaMedica->insertarAM();
+				}
+
+				//Familiares
+				$v_familiar = $_POST["v_familiar"];
+				$nombre_apellido_f = $_POST["nombre_apellido_f"];
+				$edad_f = $_POST["edad_f"];
+				$parentesco_f = $_POST["parentesco"];
+				$ocupacion_f = $_POST["ocupacion_f"];
+				$observacion_f = $_POST["observacion_f"];
+
+				$num_elementos=0;
+				$sw=true;
+
+				while ($num_elementos < count($v_familiar))
+				{
+					$familiar->setNombre_apellido($nombre_apellido_f[$num_elementos]);
+					$familiar->setEdad($edad_f[$num_elementos]);
+					$familiar->setParentesco($parentesco_f[$num_elementos]);
+					$familiar->setOcupacion($ocupacion_f[$num_elementos]);
+					$familiar->setObservacion($observacion_f[$num_elementos]);
+					
+					$id_familiar = $familiar->insertarF();
+
+					$familiarSolicitud->setId_familiar($id_familiar);
+					$familiarSolicitud->setId_solicitud($idSolicitud);
+
+					$familiarSolicitud->insertarFS();
+
+					$num_elementos=$num_elementos + 1;
+
 				}
 				header("Location:consultaSolicitud");
 				exit;

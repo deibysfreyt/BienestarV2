@@ -307,11 +307,11 @@ function agregarDetalle()
     	var fila='<tr class="filas" id="fila'+cont+'">'+
     	'<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle('+cont+')">X</button></td>'+
     	'<td><input class="form-control" type="text" name="nombre_apellido_f[]" id="nombre_apellido_f[]" placeholder="Nombre y Apellido" maxlength="45"></td>'+
-    	'<td><input class="form-control" type="text" name="edad[]" id="edad[]" placeholder="Edad" maxlength="3"></td>'+
+    	'<td><input class="form-control" type="text" name="edad_f[]" id="edad_f[]" placeholder="Edad" maxlength="3"></td>'+
     	'<td><input class="form-control" type="text" name="parentesco_f[]" id="parentesco_f[]" placeholder="Relacion Familiar" maxlength="30"></td>'+
     	'<td><input class="form-control" type="text" name="ocupacion_f[]" id="ocupacion_f[]" placeholder="A que se dedica" maxlength="45"></td>'+
-    	'<td><input class="form-control" type="text" name="observacion[]" id="observacion[]" placeholder="Otra Informacion" maxlength="45"></td>'+
-    	'<td><input type="hidden" name="id_familiar[]" id="id_familiar[] value="'+cont+'"></td>'+
+    	'<td><input class="form-control" type="text" name="observacion_f[]" id="observacion_f[]" placeholder="Otra Informacion" maxlength="45"></td>'+
+    	'<td><input type="hidden" name="v_familiar[]" id="v_familiar[] value="'+cont+'"></td>'+
     	'</tr>';
     	cont++;
     	detalles++;
