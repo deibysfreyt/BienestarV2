@@ -7,7 +7,7 @@
 		private 
 			$DB_HOST 	 = 	"localhost",
 			$PUERTO  	 = 	"5432",
-			$DB_NAME 	 = 	"bienestar_v2",
+			$DB_NAME 	 = 	"bienestarv2",
 			$DB_USERNAME = 	"postgres",
 			$DB_PASSWORD = 	"1234",
 			$conexion; 

@@ -29,7 +29,13 @@
                             <a href="solicitud"><button class="btn btn-rose btn-round" id="btnagregar">
                                 <i class="fa fa-plus-circle"></i> Crear Nueva Solicitud
                             </button></a>
-                            <div class="box-tools pull-right"></div>
+                            <div class="box-tools pull-right">
+                                <?php
+                                    if (isset($_GET["p"])) { 
+                                        $ID = $_GET["p"];
+                                        echo $ID;
+                                    }
+                                ?> </div>
                         </div>                       
                         <div class="col-md-12" id="listadoregistros">
                             <div class="card">

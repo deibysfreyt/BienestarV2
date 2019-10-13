@@ -19,8 +19,8 @@
 			parent::__construct();
 		}
 
-		public function setId_familiar($id_familiar){
-			$this->id_familiar = limpiarCadena($id_familiar);
+		public function setId_familiar($idFamiliar){
+			$this->id_familiar = limpiarCadena($idFamiliar);
 		}
 
 		public function setNombre_apellido($nombre_apellido_f){
@@ -35,11 +35,11 @@
 			$this->parentesco = limpiarCadena($parentesco_f);
 		}
 
-		public function setParentesco($ocupacion_f){
+		public function setOcupacion($ocupacion_f){
 			$this->ocupacion = limpiarCadena($ocupacion_f);
 		}
 
-		public function setParentesco($observacion_f){
+		public function setObservacion($observacion_f){
 			$this->observacion = limpiarCadena($observacion_f);
 		}
 
@@ -54,10 +54,8 @@
 			$stmt->bindParam(":observacion",$this->observacion,PDO::PARAM_STR);
 			
 			$stmt->execute();
-			return $stmt->lastInsertId();
-
+			return C_conexion::getConexion()->lastInsertId();
 			$stmt->clouse();
-
 		}
 	}
 

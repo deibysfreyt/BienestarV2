@@ -311,7 +311,7 @@ function agregarDetalle()
     	'<td><input class="form-control" type="text" name="parentesco_f[]" id="parentesco_f[]" placeholder="Relacion Familiar" maxlength="30"></td>'+
     	'<td><input class="form-control" type="text" name="ocupacion_f[]" id="ocupacion_f[]" placeholder="A que se dedica" maxlength="45"></td>'+
     	'<td><input class="form-control" type="text" name="observacion_f[]" id="observacion_f[]" placeholder="Otra Informacion" maxlength="45"></td>'+
-    	'<td><input type="hidden" name="v_familiar[]" id="v_familiar[] value="'+cont+'"></td>'+
+    	'<td><input type="hidden" name="id_familiar[]" id="id_familiar[] value="'+cont+'"></td>'+
     	'</tr>';
     	cont++;
     	detalles++;

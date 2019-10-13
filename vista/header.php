@@ -120,6 +120,9 @@
                         <div class="collapse" id="formsExamples">
                             <ul class="nav">
                                 <li>
+                                    <a href="especialidad">Especialidad</a>
+                                </li>
+                                <li>
                                     <a href="forms/validation.html">Validation Forms</a>
                                 </li>
                                 <li>

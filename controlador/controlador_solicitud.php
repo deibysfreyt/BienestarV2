@@ -12,7 +12,7 @@
 		$areaMedica = new AreaMedica();
 		require_once("modelos/modelo_familiar.php");
 		$familiar = new Familiar();
-		require_once("modelo/modelo_familiar_solicitud.php");
+		require_once("modelos/modelo_familiarSolicitud.php");
 		$familiarSolicitud = new FamiliarSolicitud();
 		require_once("modelos/modelo_".$action.".php");
 		$solicitud = new Solicitud();
@@ -125,36 +125,40 @@
 					$AreasMedicas = $areaMedica->insertarAM();
 				}
 
-				//Familiares
-				$v_familiar = $_POST["v_familiar"];
-				$nombre_apellido_f = $_POST["nombre_apellido_f"];
-				$edad_f = $_POST["edad_f"];
-				$parentesco_f = $_POST["parentesco"];
-				$ocupacion_f = $_POST["ocupacion_f"];
-				$observacion_f = $_POST["observacion_f"];
+				if (isset($_POST["id_familiar"])) {
+					//Familiares
+					$id_familiar = $_POST["id_familiar"];
+					$nombre_apellido_f = $_POST["nombre_apellido_f"];
+					$edad_f = $_POST["edad_f"];
+					$parentesco_f = $_POST["parentesco_f"];
+					$ocupacion_f = $_POST["ocupacion_f"];
+					$observacion_f = $_POST["observacion_f"];
 
-				$num_elementos=0;
-				$sw=true;
+					$num_elementos=0;
+					$sw=true;
 
-				while ($num_elementos < count($v_familiar))
-				{
-					$familiar->setNombre_apellido($nombre_apellido_f[$num_elementos]);
-					$familiar->setEdad($edad_f[$num_elementos]);
-					$familiar->setParentesco($parentesco_f[$num_elementos]);
-					$familiar->setOcupacion($ocupacion_f[$num_elementos]);
-					$familiar->setObservacion($observacion_f[$num_elementos]);
+					while ($num_elementos < count($id_familiar))
+					{
+						$familiar->setNombre_apellido($nombre_apellido_f[$num_elementos]);
+						$familiar->setEdad($edad_f[$num_elementos]);
+						$familiar->setParentesco($parentesco_f[$num_elementos]);
+						$familiar->setOcupacion($ocupacion_f[$num_elementos]);
+						$familiar->setObservacion($observacion_f[$num_elementos]);
 					
-					$id_familiar = $familiar->insertarF();
+						$idFamiliar = $familiar->insertarF();
 
-					$familiarSolicitud->setId_familiar($id_familiar);
-					$familiarSolicitud->setId_solicitud($idSolicitud);
+						$familiarSolicitud->setId_familiar($idFamiliar);
+						$familiarSolicitud->setId_solicitud($idSolicitud);
 
-					$familiarSolicitud->insertarFS();
+						$familiarSolicitud->insertarFS();
 
-					$num_elementos=$num_elementos + 1;
+						$num_elementos=$num_elementos + 1;
 
+					}
 				}
-				header("Location:consultaSolicitud");
+				header("Location:index.php?do=consultaSolicitud&p=$idSolicitud");
+				//header("Location:consultaSolicitud");
+				echo $idSolicitud;
 				exit;
 			}
 		}
