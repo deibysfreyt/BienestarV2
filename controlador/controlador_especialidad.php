@@ -18,10 +18,10 @@
 
 		if (isset($_POST["id_especialidad"])) {
 			
-			$id_especialidad = limpiarCadena($_POST["id_especialidad"]);
-
 			if ( preg_match('/[[:alpha:]]/', $_POST["nombre"]) && preg_match('/^[[:digit:]]+$/', $_POST["condicion"]) && preg_match('/[[:alpha:]]/', $_POST["descripcion"]) ) {
-
+				
+				$id_especialidad = limpiarCadena($_POST["id_especialidad"]);
+				
 				$especialidad->setNombre($_POST["nombre"]);
 				$especialidad->setDescripcion($_POST["descripcion"]);
 				$especialidad->setCondicion($_POST["condicion"]);
@@ -35,7 +35,7 @@
 
 				if ($espd) {
 					header('Status: 301 Moved Permanently', false, 301);
-					header("location:tablaSolicitud");
+					header("location:tablaEspecialidad");
 					exit();
 				}
 			}

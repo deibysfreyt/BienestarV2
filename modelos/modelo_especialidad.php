@@ -72,14 +72,14 @@
 			$stmt->close();
 		}
 
-		public function actualizarGS(){
+		public function actualizarE(){
 			
 			$stmt = C_conexion::getConexion()->prepare("UPDATE especialidad SET nombre = :nombre,condicion = :condicion,descripcion = :descripcion WHERE id_especialidad = :id_especialidad");
 
 			$stmt->bindParam(":nombre",$this->nombre,PDO::PARAM_STR);
 			$stmt->bindParam(":condicion",$this->condicion,PDO::PARAM_INT);
 			$stmt->bindParam(":descripcion",$this->descripcion,PDO::PARAM_STR);
-			$stmt->bindParam(":id_especialidad",$this->id_especialidad, PDO::PARAM_INT);
+			$stmt->bindParam(":id_especialidad",$this->id_especialidad,PDO::PARAM_INT);
 
 			return $stmt->execute();
 			$stmt->clouse();
@@ -87,7 +87,7 @@
 
 		public function seleccionarE(){
 
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM especialidad WHERE condicion = true");
+			$stmt = C_conexion::getConexion()->prepare("SELECT id_especialidad,nombre FROM especialidad WHERE condicion = true");
 
 			$stmt->execute();
 

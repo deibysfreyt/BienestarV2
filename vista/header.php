@@ -120,7 +120,16 @@
                         <div class="collapse" id="formsExamples">
                             <ul class="nav">
                                 <li>
+                                    <a href="medico">Medicos</a>
+                                </li>
+                                <li>
+                                    <a href="tablaMedico">Gestionar Medico</a>
+                                </li>
+                                <li>
                                     <a href="especialidad">Especialidad</a>
+                                </li>
+                                <li>
+                                    <a href="tablaEspecialidad">Gestion de Especialidad</a>
                                 </li>
                                 <li>
                                     <a href="forms/validation.html">Validation Forms</a>
