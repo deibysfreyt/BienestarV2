@@ -110,7 +110,7 @@
 			return $stmt->execute();
 		}
 
-		public function ConsultaAtendidas(){
+		public function ConsultaCI(){
 			$stmt = C_conexion::getConexion()->prepare("SELECT id_solicitante FROM solicitante WHERE cedula = :cedula");
 			
 			$stmt->bindParam(":cedula",$this->cedula,PDO::PARAM_STR);
@@ -118,6 +118,18 @@
 			return $stmt->execute();
 
 			$stmt->close();
+		}
+
+		public function actualizarPAS(){
+
+			$stmt = C_conexion::getConexion()->prepare("UPDATE solicitante SET tlf_movil= :tlf_movil,parroquia= :parroquia WHERE id_solicitante = :id_solicitante");
+
+			$stmt->bindParam(":tlf_movil",$this->tlf_movil,PDO::PARAM_STR);
+			$stmt->bindParam(":parroquia",$this->parroquia,PDO::PARAM_STR);
+			$stmt->bindParam("id_solicitante",$this->id_solicitante);
+
+			return $stmt->execute();
+
 		}
 
 		/*

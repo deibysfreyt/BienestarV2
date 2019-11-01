@@ -74,7 +74,7 @@
 			$stmt->clouse();
 
 		}
-
+		/*
 		public function actualizarM(){
 			$stmt = C_conexion::getConexion()->prepare("UPDATE medico SET id_beneficiario= :id_beneficiario,fecha= :fecha,lugar= :lugar,peso= :peso,talla= :talla,diagnostico= :diagnostico WHERE id_medico = :id_medico");
 			$stmt->bindParam(":id_beneficiario",$this->id_beneficiario,PDO::PARAM_STR);
@@ -86,11 +86,11 @@
 			$stmt->bindParam(":id_medico",$this->id_medico,PDO::PARAM_INT);
 
 			return $stmt->execute();
-		}
+		}*/
 
-		public function listarM(){
+		public function listarPA(){
 			
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM medico");
+			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM atendidas");
 			
 			$stmt->execute();
 

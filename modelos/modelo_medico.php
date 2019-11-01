@@ -103,7 +103,7 @@
 
 		public function seleccionarM(){
 
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM medico WHERE condicion = true");
+			$stmt = C_conexion::getConexion()->prepare("SELECT e.nombre,m.nombre_apellido,m.id_medico FROM especialidad e INNER JOIN medico m ON e.id_especialidad=m.id_medico WHERE m.condicion = true");
 
 			$stmt->execute();
 

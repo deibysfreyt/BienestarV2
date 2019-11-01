@@ -120,6 +120,9 @@
                         <div class="collapse" id="formsExamples">
                             <ul class="nav">
                                 <li>
+                                    <a href="personasAtendidas">Asistencia</a>
+                                </li>
+                                <li>
                                     <a href="medico">Medicos</a>
                                 </li>
                                 <li>

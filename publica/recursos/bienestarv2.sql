@@ -17,10 +17,10 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: DATABASE bienestar_v2; Type: COMMENT; Schema: -; Owner: postgres
+-- Name: DATABASE bienestarv2; Type: COMMENT; Schema: -; Owner: postgres
 --
 
-COMMENT ON DATABASE bienestar_v2 IS 'Segunda Versión de Base de Datos para la Segunda versión del Sistema de la Fundación del Niño al Departamento de Bienestar.';
+COMMENT ON DATABASE bienestarv2 IS 'Segunda Versión de Base de Datos para la Segunda versión del Sistema de la Fundación del Niño al Departamento de Bienestar.';
 
 
 --
@@ -126,12 +126,12 @@ ALTER SEQUENCE public.area_fisica_id_area_fisica_seq OWNED BY public.area_fisica
 
 CREATE TABLE public.area_medica (
     id_area_medica integer NOT NULL,
-    id_solicitud integer NOT NULL,
+    id_solicitud integer,
     diagnostico character(45),
     motivo_solicitud character(45),
     recursos_disponibles character(9),
     monto_aprobado character(9),
-    observacion character(100)
+    observacion character(60)
 );
 
 
@@ -216,11 +216,11 @@ ALTER SEQUENCE public.area_medica_id_area_medica_seq OWNED BY public.area_medica
 
 
 --
--- Name: atendidos; Type: TABLE; Schema: public; Owner: postgres
+-- Name: atendidas; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.atendidos (
-    id_atendidos integer NOT NULL,
+CREATE TABLE public.atendidas (
+    id_atendidas integer NOT NULL,
     id_medico integer NOT NULL,
     id_beneficiario integer NOT NULL,
     fecha date NOT NULL,
@@ -232,76 +232,76 @@ CREATE TABLE public.atendidos (
 );
 
 
-ALTER TABLE public.atendidos OWNER TO postgres;
+ALTER TABLE public.atendidas OWNER TO postgres;
 
 --
--- Name: TABLE atendidos; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE atendidas; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON TABLE public.atendidos IS 'Datos de las Personas que fueron atendida en el Servicio';
-
-
---
--- Name: COLUMN atendidos.id_atendidos; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.atendidos.id_atendidos IS 'Identificador';
+COMMENT ON TABLE public.atendidas IS 'Datos de las Personas que fueron atendida en el Servicio';
 
 
 --
--- Name: COLUMN atendidos.id_medico; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN atendidas.id_atendidas; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.atendidos.id_medico IS 'Clave Foránea';
-
-
---
--- Name: COLUMN atendidos.id_beneficiario; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.atendidos.id_beneficiario IS 'Clave Foráneas';
+COMMENT ON COLUMN public.atendidas.id_atendidas IS 'Identificador';
 
 
 --
--- Name: COLUMN atendidos.fecha; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN atendidas.id_medico; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.atendidos.fecha IS 'Fecha atendida';
-
-
---
--- Name: COLUMN atendidos.lugar; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.atendidos.lugar IS 'Área en donde se realizo el servicio';
+COMMENT ON COLUMN public.atendidas.id_medico IS 'Clave Foránea';
 
 
 --
--- Name: COLUMN atendidos.peso; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN atendidas.id_beneficiario; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.atendidos.peso IS 'Kg que pesa';
-
-
---
--- Name: COLUMN atendidos.talla; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.atendidos.talla IS 'Cm que mide la persona';
+COMMENT ON COLUMN public.atendidas.id_beneficiario IS 'Clave Foráneas';
 
 
 --
--- Name: COLUMN atendidos.diagnostico; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN atendidas.fecha; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.atendidos.diagnostico IS 'Observación Medica';
+COMMENT ON COLUMN public.atendidas.fecha IS 'Fecha atendida';
 
 
 --
--- Name: COLUMN atendidos.edad; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN atendidas.lugar; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.atendidos.edad IS 'Edad de la persona atendida';
+COMMENT ON COLUMN public.atendidas.lugar IS 'Área en donde se realizo el servicio';
+
+
+--
+-- Name: COLUMN atendidas.peso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.atendidas.peso IS 'Kg que pesa';
+
+
+--
+-- Name: COLUMN atendidas.talla; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.atendidas.talla IS 'Cm que mide la persona';
+
+
+--
+-- Name: COLUMN atendidas.diagnostico; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.atendidas.diagnostico IS 'Observación Medica';
+
+
+--
+-- Name: COLUMN atendidas.edad; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.atendidas.edad IS 'Edad de la persona atendida';
 
 
 --
@@ -323,7 +323,7 @@ ALTER TABLE public.atendidos_id_atendidos_seq OWNER TO postgres;
 -- Name: atendidos_id_atendidos_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.atendidos_id_atendidos_seq OWNED BY public.atendidos.id_atendidos;
+ALTER SEQUENCE public.atendidos_id_atendidos_seq OWNED BY public.atendidas.id_atendidas;
 
 
 --
@@ -628,13 +628,135 @@ ALTER SEQUENCE public.configuracion_id_configuracion_seq OWNED BY public.configu
 
 
 --
+-- Name: solicitante; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.solicitante (
+    id_solicitante integer NOT NULL,
+    cedula character(8) NOT NULL,
+    nombre_apellido character(45) NOT NULL,
+    fecha_nacimiento date,
+    direccion character(100),
+    tlf_movil character(11),
+    tlf_fijo character(11),
+    parroquia character(16),
+    ocupacion character(45),
+    ingreso character(10),
+    estado_civil character(13)
+);
+
+
+ALTER TABLE public.solicitante OWNER TO postgres;
+
+--
+-- Name: TABLE solicitante; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON TABLE public.solicitante IS 'Datos de la persona a solicitar el beneficio u representante del niño';
+
+
+--
+-- Name: COLUMN solicitante.id_solicitante; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.id_solicitante IS 'ID';
+
+
+--
+-- Name: COLUMN solicitante.cedula; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.cedula IS 'Numero de Documento';
+
+
+--
+-- Name: COLUMN solicitante.nombre_apellido; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.nombre_apellido IS 'Nombre y Apellido';
+
+
+--
+-- Name: COLUMN solicitante.fecha_nacimiento; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.fecha_nacimiento IS 'Fecha en que nació';
+
+
+--
+-- Name: COLUMN solicitante.direccion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.direccion IS 'Donde reside';
+
+
+--
+-- Name: COLUMN solicitante.tlf_movil; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.tlf_movil IS 'Teléfono Celular';
+
+
+--
+-- Name: COLUMN solicitante.tlf_fijo; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.tlf_fijo IS 'Teléfono de Casa';
+
+
+--
+-- Name: COLUMN solicitante.parroquia; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.parroquia IS 'Área en donde vive';
+
+
+--
+-- Name: COLUMN solicitante.ocupacion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.ocupacion IS 'A que se dedica';
+
+
+--
+-- Name: COLUMN solicitante.ingreso; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.ingreso IS 'Monto o salario que recibe';
+
+
+--
+-- Name: COLUMN solicitante.estado_civil; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.solicitante.estado_civil IS 'Casado, soltero, divorciado,...';
+
+
+--
+-- Name: datos_s_b; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public.datos_s_b AS
+ SELECT s.cedula,
+    s.nombre_apellido AS solicitante,
+    b.nombre_apellido AS beneficiario,
+    s.id_solicitante AS id_s,
+    b.id_beneficiario AS id_b
+   FROM (public.solicitante s
+     JOIN public.beneficiario b ON ((s.id_solicitante = b.id_beneficiario)));
+
+
+ALTER TABLE public.datos_s_b OWNER TO postgres;
+
+--
 -- Name: especialidad; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.especialidad (
     id_especialidad integer NOT NULL,
     nombre character(45) NOT NULL,
-    condicion boolean DEFAULT true NOT NULL
+    condicion boolean DEFAULT true NOT NULL,
+    descripcion character(60)
 );
 
 
@@ -666,6 +788,13 @@ COMMENT ON COLUMN public.especialidad.nombre IS 'Nombre del Servicio';
 --
 
 COMMENT ON COLUMN public.especialidad.condicion IS 'Estado o Disponibilidad de la especialidad';
+
+
+--
+-- Name: COLUMN especialidad.descripcion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.especialidad.descripcion IS 'Descripción de la especialidad';
 
 
 --
@@ -850,7 +979,7 @@ CREATE TABLE public.medico (
     nombre_apellido character(45) NOT NULL,
     cedula character(8) NOT NULL,
     cargo character(45),
-    telefono character(11),
+    tlf character(11),
     condicion boolean DEFAULT true NOT NULL
 );
 
@@ -900,10 +1029,10 @@ COMMENT ON COLUMN public.medico.cargo IS 'que posición tiene';
 
 
 --
--- Name: COLUMN medico.telefono; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN medico.tlf; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.medico.telefono IS 'numero de contacto';
+COMMENT ON COLUMN public.medico.tlf IS 'numero de contacto';
 
 
 --
@@ -934,6 +1063,53 @@ ALTER TABLE public.medicos_id_medico_seq OWNER TO postgres;
 
 ALTER SEQUENCE public.medicos_id_medico_seq OWNED BY public.medico.id_medico;
 
+
+--
+-- Name: mostrar_s; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public.mostrar_s AS
+ SELECT solicitante.id_solicitante,
+    solicitante.cedula,
+    solicitante.nombre_apellido,
+    solicitante.fecha_nacimiento,
+    solicitante.direccion,
+    solicitante.tlf_movil,
+    solicitante.tlf_fijo,
+    solicitante.parroquia,
+    solicitante.ocupacion,
+    solicitante.ingreso,
+    solicitante.estado_civil
+   FROM public.solicitante;
+
+
+ALTER TABLE public.mostrar_s OWNER TO postgres;
+
+--
+-- Name: mostrar_s_b; Type: VIEW; Schema: public; Owner: postgres
+--
+
+CREATE VIEW public.mostrar_s_b AS
+ SELECT s.id_solicitante,
+    s.cedula,
+    s.nombre_apellido,
+    s.fecha_nacimiento,
+    s.direccion,
+    s.tlf_movil,
+    s.tlf_fijo,
+    s.parroquia,
+    s.ocupacion,
+    s.ingreso,
+    s.estado_civil,
+    b.id_beneficiario,
+    b.cedula AS cedula_b,
+    b.nombre_apellido AS nombre_apellido_b,
+    b.fecha_nacimiento AS fecha_nacimiento_b
+   FROM (public.solicitante s
+     JOIN public.beneficiario b ON ((s.id_solicitante = b.id_beneficiario)));
+
+
+ALTER TABLE public.mostrar_s_b OWNER TO postgres;
 
 --
 -- Name: permiso; Type: TABLE; Schema: public; Owner: postgres
@@ -991,111 +1167,6 @@ ALTER SEQUENCE public.permiso_id_permiso_seq OWNED BY public.permiso.id_permiso;
 
 
 --
--- Name: solicitante; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.solicitante (
-    id_solicitante integer NOT NULL,
-    cedula character(8) NOT NULL,
-    nombre_apellido character(45) NOT NULL,
-    fecha_nacimiento date,
-    direccion character(100),
-    tlf_movil character(11),
-    tlf_fijo character(11),
-    parroquia character(16),
-    ocupacion character(45),
-    ingreso character(9),
-    estado_civil character(13)
-);
-
-
-ALTER TABLE public.solicitante OWNER TO postgres;
-
---
--- Name: TABLE solicitante; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON TABLE public.solicitante IS 'Datos de la persona a solicitar el beneficio u representante del niño';
-
-
---
--- Name: COLUMN solicitante.id_solicitante; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.id_solicitante IS 'ID';
-
-
---
--- Name: COLUMN solicitante.cedula; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.cedula IS 'Numero de Documento';
-
-
---
--- Name: COLUMN solicitante.nombre_apellido; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.nombre_apellido IS 'Nombre y Apellido';
-
-
---
--- Name: COLUMN solicitante.fecha_nacimiento; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.fecha_nacimiento IS 'Fecha en que nació';
-
-
---
--- Name: COLUMN solicitante.direccion; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.direccion IS 'Donde reside';
-
-
---
--- Name: COLUMN solicitante.tlf_movil; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.tlf_movil IS 'Teléfono Celular';
-
-
---
--- Name: COLUMN solicitante.tlf_fijo; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.tlf_fijo IS 'Teléfono de Casa';
-
-
---
--- Name: COLUMN solicitante.parroquia; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.parroquia IS 'Área en donde vive';
-
-
---
--- Name: COLUMN solicitante.ocupacion; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.ocupacion IS 'A que se dedica';
-
-
---
--- Name: COLUMN solicitante.ingreso; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.ingreso IS 'Monto o salario que recibe';
-
-
---
--- Name: COLUMN solicitante.estado_civil; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.solicitante.estado_civil IS 'Casado, soltero, divorciado,...';
-
-
---
 -- Name: solicitante_id_solicitante_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -1123,13 +1194,13 @@ ALTER SEQUENCE public.solicitante_id_solicitante_seq OWNED BY public.solicitante
 
 CREATE TABLE public.solicitud (
     id_solicitud integer NOT NULL,
-    id_usuario integer NOT NULL,
-    id_beneficiario integer NOT NULL,
-    id_tipo_solicitud integer NOT NULL,
-    id_area_fisica integer NOT NULL,
-    fecha date NOT NULL,
+    id_usuario integer,
+    id_beneficiario integer,
+    id_tipo_solicitud integer,
+    id_area_fisica integer,
+    fecha date,
     semana_embarazo character(3),
-    estado character(11) NOT NULL
+    estado character(11)
 );
 
 
@@ -1228,7 +1299,7 @@ CREATE TABLE public.tipo_solicitud (
     id_tipo_solicitud integer NOT NULL,
     solicitud character(45) NOT NULL,
     descripcion character(45) NOT NULL,
-    condicion boolean DEFAULT true NOT NULL
+    condicion boolean NOT NULL
 );
 
 
@@ -1535,10 +1606,10 @@ ALTER TABLE ONLY public.area_medica ALTER COLUMN id_area_medica SET DEFAULT next
 
 
 --
--- Name: atendidos id_atendidos; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: atendidas id_atendidas; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.atendidos ALTER COLUMN id_atendidos SET DEFAULT nextval('public.atendidos_id_atendidos_seq'::regclass);
+ALTER TABLE ONLY public.atendidas ALTER COLUMN id_atendidas SET DEFAULT nextval('public.atendidos_id_atendidos_seq'::regclass);
 
 
 --
@@ -1647,240 +1718,6 @@ ALTER TABLE ONLY public.visita_social ALTER COLUMN id_visita_social SET DEFAULT 
 
 
 --
--- Data for Name: area_fisica; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: area_medica; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: atendidos; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: beneficiario; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: bitacora; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: citas; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: configuracion; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: especialidad; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: familiar; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: familiar_solicitud; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: medico; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: permiso; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: solicitante; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: solicitud; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: tipo_solicitud; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: usuario_permiso; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Data for Name: visita_social; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Name: area_fisica_id_area_fisica_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.area_fisica_id_area_fisica_seq', 1, false);
-
-
---
--- Name: area_medica_id_area_medica_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.area_medica_id_area_medica_seq', 1, false);
-
-
---
--- Name: atendidos_id_atendidos_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.atendidos_id_atendidos_seq', 1, false);
-
-
---
--- Name: beneficiario_id_beneficiario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.beneficiario_id_beneficiario_seq', 1, false);
-
-
---
--- Name: bitacora_id_bitacora_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.bitacora_id_bitacora_seq', 1, false);
-
-
---
--- Name: citas_id_citas_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.citas_id_citas_seq', 1, false);
-
-
---
--- Name: configuracion_id_configuracion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.configuracion_id_configuracion_seq', 1, false);
-
-
---
--- Name: especialidad_id_especialidad_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.especialidad_id_especialidad_seq', 1, false);
-
-
---
--- Name: familiar_id_familiar_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.familiar_id_familiar_seq', 1, false);
-
-
---
--- Name: familiar_solicitud_id_familiar_solicitud_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.familiar_solicitud_id_familiar_solicitud_seq', 1, false);
-
-
---
--- Name: medicos_id_medico_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.medicos_id_medico_seq', 1, false);
-
-
---
--- Name: permiso_id_permiso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.permiso_id_permiso_seq', 1, false);
-
-
---
--- Name: solicitante_id_solicitante_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.solicitante_id_solicitante_seq', 1, false);
-
-
---
--- Name: solicitud_id_solicitud_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.solicitud_id_solicitud_seq', 1, false);
-
-
---
--- Name: tipo_solicitud_id_tipo_solicitud_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.tipo_solicitud_id_tipo_solicitud_seq', 1, false);
-
-
---
--- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.usuario_id_usuario_seq', 1, false);
-
-
---
--- Name: usuario_permiso_id_usuario_permiso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.usuario_permiso_id_usuario_permiso_seq', 1, false);
-
-
---
--- Name: visita_social_id_visita_social_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.visita_social_id_visita_social_seq', 1, false);
-
-
---
 -- Name: area_fisica area_fisica_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -1897,11 +1734,11 @@ ALTER TABLE ONLY public.area_medica
 
 
 --
--- Name: atendidos atendidos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: atendidas atendidos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.atendidos
-    ADD CONSTRAINT atendidos_pkey PRIMARY KEY (id_atendidos);
+ALTER TABLE ONLY public.atendidas
+    ADD CONSTRAINT atendidos_pkey PRIMARY KEY (id_atendidas);
 
 
 --
@@ -2057,18 +1894,18 @@ ALTER TABLE ONLY public.area_medica
 
 
 --
--- Name: atendidos fk_atendidos_beneficiario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: atendidas fk_atendidos_beneficiario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.atendidos
+ALTER TABLE ONLY public.atendidas
     ADD CONSTRAINT fk_atendidos_beneficiario FOREIGN KEY (id_beneficiario) REFERENCES public.beneficiario(id_beneficiario) ON UPDATE CASCADE;
 
 
 --
--- Name: atendidos fk_atendidos_medico; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: atendidas fk_atendidos_medico; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.atendidos
+ALTER TABLE ONLY public.atendidas
     ADD CONSTRAINT fk_atendidos_medico FOREIGN KEY (id_medico) REFERENCES public.medico(id_medico) ON UPDATE CASCADE;
 
 
