@@ -22,6 +22,7 @@
 <body>
     <div class="wrapper">
         <div class="sidebar" data-active-color="orange" data-background-color="white" data-image="publica/img/sidebar-1.jpg">
+             
             <!--
         Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
         Tip 2: you can also add an image using data-image tag
@@ -123,16 +124,16 @@
                                     <a href="personasAtendidas">Asistencia</a>
                                 </li>
                                 <li>
-                                    <a href="medico">Medicos</a>
+                                    <a href="medicos">Medicos</a>
                                 </li>
                                 <li>
-                                    <a href="tablaMedico">Gestionar Medico</a>
+                                    <a href="tablaMedicos">Gestionar Medico</a>
                                 </li>
                                 <li>
-                                    <a href="especialidad">Especialidad</a>
+                                    <a href="servicios">Servicios</a>
                                 </li>
                                 <li>
-                                    <a href="tablaEspecialidad">Gestion de Especialidad</a>
+                                    <a href="tablaServicios">Gestion de Servicios</a>
                                 </li>
                                 <li>
                                     <a href="forms/validation.html">Validation Forms</a>

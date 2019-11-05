@@ -4,7 +4,7 @@
 		
 		require_once("modelos/modelo_".$action.".php");
 
-		$especialidad = new Especialidad();
+		$servicios = new Servicios();
 
 		//Preguntamos si la variable esta definida o declarada, es decir que no sea NULL
 		if (isset($_GET["id"])) {
@@ -12,30 +12,30 @@
 			if (preg_match('/^[[:digit:]]+$/', $_GET["id"])) {
 
 				$id = (int)$_GET["id"];
-				$especialidades = $especialidad->mostrarE($id);
+				$Sr = $servicios->mostrarSr($id);
 			}	
 		}
 
-		if (isset($_POST["id_especialidad"])) {
+		if (!empty($_POST)) {
 			
 			if ( preg_match('/[[:alpha:]]/', $_POST["nombre"]) && preg_match('/^[[:digit:]]+$/', $_POST["condicion"]) && preg_match('/[[:alpha:]]/', $_POST["descripcion"]) ) {
 				
-				$id_especialidad = limpiarCadena($_POST["id_especialidad"]);
+				$id_servicios = limpiarCadena($_POST["id_servicios"]);
 				
-				$especialidad->setNombre($_POST["nombre"]);
-				$especialidad->setDescripcion($_POST["descripcion"]);
-				$especialidad->setCondicion($_POST["condicion"]);
+				$servicios->setNombre($_POST["nombre"]);
+				$servicios->setDescripcion($_POST["descripcion"]);
+				$servicios->setCondicion($_POST["condicion"]);
 
-				if (empty($id_especialidad)) {
-					$espd = $especialidad->insertarE();
+				if (empty($id_servicios)) {
+					$espd = $servicios->insertarSr();
 				}else{
-					$especialidad->setIdEspecialidad($id_especialidad);
-					$espd = $especialidad->actualizarE();
+					$servicios->setIdServicios($id_servicios);
+					$espd = $servicios->actualizarSr();
 				}
 
 				if ($espd) {
 					header('Status: 301 Moved Permanently', false, 301);
-					header("location:tablaEspecialidad");
+					header("location:tablaServicios");
 					exit();
 				}
 			}

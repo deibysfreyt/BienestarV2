@@ -110,12 +110,13 @@
 			return $stmt->execute();
 		}
 
-		public function ConsultaCI(){
+		public function ConsultaCI($ci){
 			$stmt = C_conexion::getConexion()->prepare("SELECT id_solicitante FROM solicitante WHERE cedula = :cedula");
 			
-			$stmt->bindParam(":cedula",$this->cedula,PDO::PARAM_STR);
+			$stmt->bindParam(":cedula",$ci,PDO::PARAM_STR);
 
-			return $stmt->execute();
+			return $stmt->fetch();
+			//return $stmt->execute();
 
 			$stmt->close();
 		}

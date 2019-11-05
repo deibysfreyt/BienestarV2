@@ -17,13 +17,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: DATABASE bienestarv2; Type: COMMENT; Schema: -; Owner: postgres
---
-
-COMMENT ON DATABASE bienestarv2 IS 'Segunda Versión de Base de Datos para la Segunda versión del Sistema de la Fundación del Niño al Departamento de Bienestar.';
-
-
---
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -221,7 +214,7 @@ ALTER SEQUENCE public.area_medica_id_area_medica_seq OWNED BY public.area_medica
 
 CREATE TABLE public.atendidas (
     id_atendidas integer NOT NULL,
-    id_medico integer NOT NULL,
+    id_medicos integer NOT NULL,
     id_beneficiario integer NOT NULL,
     fecha date NOT NULL,
     lugar character(45) NOT NULL,
@@ -249,10 +242,10 @@ COMMENT ON COLUMN public.atendidas.id_atendidas IS 'Identificador';
 
 
 --
--- Name: COLUMN atendidas.id_medico; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN atendidas.id_medicos; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.atendidas.id_medico IS 'Clave Foránea';
+COMMENT ON COLUMN public.atendidas.id_medicos IS 'Clave Foránea';
 
 
 --
@@ -333,7 +326,7 @@ ALTER SEQUENCE public.atendidos_id_atendidos_seq OWNED BY public.atendidas.id_at
 CREATE TABLE public.beneficiario (
     id_beneficiario integer NOT NULL,
     id_solicitante integer NOT NULL,
-    cedula character(8),
+    cedula integer,
     nombre_apellido character(45) NOT NULL,
     fecha_nacimiento date
 );
@@ -490,7 +483,7 @@ ALTER SEQUENCE public.bitacora_id_bitacora_seq OWNED BY public.bitacora.id_bitac
 
 CREATE TABLE public.citas (
     id_citas integer NOT NULL,
-    id_medico integer NOT NULL,
+    id_medicos integer NOT NULL,
     id_beneficiario integer NOT NULL,
     fecha date NOT NULL,
     descripcion character(100),
@@ -515,10 +508,10 @@ COMMENT ON COLUMN public.citas.id_citas IS 'Identificador';
 
 
 --
--- Name: COLUMN citas.id_medico; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN citas.id_medicos; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.citas.id_medico IS 'Clave Foránea';
+COMMENT ON COLUMN public.citas.id_medicos IS 'Clave Foránea';
 
 
 --
@@ -633,7 +626,7 @@ ALTER SEQUENCE public.configuracion_id_configuracion_seq OWNED BY public.configu
 
 CREATE TABLE public.solicitante (
     id_solicitante integer NOT NULL,
-    cedula character(8) NOT NULL,
+    cedula integer NOT NULL,
     nombre_apellido character(45) NOT NULL,
     fecha_nacimiento date,
     direccion character(100),
@@ -749,52 +742,52 @@ CREATE VIEW public.datos_s_b AS
 ALTER TABLE public.datos_s_b OWNER TO postgres;
 
 --
--- Name: especialidad; Type: TABLE; Schema: public; Owner: postgres
+-- Name: servicios; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.especialidad (
-    id_especialidad integer NOT NULL,
+CREATE TABLE public.servicios (
+    id_servicios integer NOT NULL,
     nombre character(45) NOT NULL,
     condicion boolean DEFAULT true NOT NULL,
     descripcion character(60)
 );
 
 
-ALTER TABLE public.especialidad OWNER TO postgres;
+ALTER TABLE public.servicios OWNER TO postgres;
 
 --
--- Name: TABLE especialidad; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE servicios; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON TABLE public.especialidad IS 'Se cargara las especialidades o de los Servicios que la F.N. Ofrece al Publico';
-
-
---
--- Name: COLUMN especialidad.id_especialidad; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.especialidad.id_especialidad IS 'Identificador';
+COMMENT ON TABLE public.servicios IS 'Se cargara las especialidades o de los Servicios que la F.N. Ofrece al Publico';
 
 
 --
--- Name: COLUMN especialidad.nombre; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN servicios.id_servicios; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.especialidad.nombre IS 'Nombre del Servicio';
-
-
---
--- Name: COLUMN especialidad.condicion; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.especialidad.condicion IS 'Estado o Disponibilidad de la especialidad';
+COMMENT ON COLUMN public.servicios.id_servicios IS 'Identificador';
 
 
 --
--- Name: COLUMN especialidad.descripcion; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN servicios.nombre; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.especialidad.descripcion IS 'Descripción de la especialidad';
+COMMENT ON COLUMN public.servicios.nombre IS 'Nombre del Servicio';
+
+
+--
+-- Name: COLUMN servicios.condicion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.servicios.condicion IS 'Estado o Disponibilidad de la especialidad';
+
+
+--
+-- Name: COLUMN servicios.descripcion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.servicios.descripcion IS 'Descripción de la especialidad';
 
 
 --
@@ -816,7 +809,7 @@ ALTER TABLE public.especialidad_id_especialidad_seq OWNER TO postgres;
 -- Name: especialidad_id_especialidad_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.especialidad_id_especialidad_seq OWNED BY public.especialidad.id_especialidad;
+ALTER SEQUENCE public.especialidad_id_especialidad_seq OWNED BY public.servicios.id_servicios;
 
 
 --
@@ -970,76 +963,76 @@ ALTER SEQUENCE public.familiar_solicitud_id_familiar_solicitud_seq OWNED BY publ
 
 
 --
--- Name: medico; Type: TABLE; Schema: public; Owner: postgres
+-- Name: medicos; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.medico (
-    id_medico integer NOT NULL,
-    id_especialidad integer NOT NULL,
+CREATE TABLE public.medicos (
+    id_medicos integer NOT NULL,
     nombre_apellido character(45) NOT NULL,
-    cedula character(8) NOT NULL,
+    cedula integer NOT NULL,
     cargo character(45),
     tlf character(11),
-    condicion boolean DEFAULT true NOT NULL
+    condicion boolean DEFAULT true NOT NULL,
+    especialidad character(45)
 );
 
 
-ALTER TABLE public.medico OWNER TO postgres;
+ALTER TABLE public.medicos OWNER TO postgres;
 
 --
--- Name: TABLE medico; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: TABLE medicos; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON TABLE public.medico IS 'Datos de los Médicos o Profesionales en el Área de salud';
-
-
---
--- Name: COLUMN medico.id_medico; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.medico.id_medico IS 'Identificador';
+COMMENT ON TABLE public.medicos IS 'Datos de los Médicos o Profesionales en el Área de salud';
 
 
 --
--- Name: COLUMN medico.id_especialidad; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN medicos.id_medicos; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.medico.id_especialidad IS 'Clave Foránea';
-
-
---
--- Name: COLUMN medico.nombre_apellido; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.medico.nombre_apellido IS 'Nombre y Apellido';
+COMMENT ON COLUMN public.medicos.id_medicos IS 'Identificador';
 
 
 --
--- Name: COLUMN medico.cedula; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN medicos.nombre_apellido; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.medico.cedula IS 'ID de la persona';
-
-
---
--- Name: COLUMN medico.cargo; Type: COMMENT; Schema: public; Owner: postgres
---
-
-COMMENT ON COLUMN public.medico.cargo IS 'que posición tiene';
+COMMENT ON COLUMN public.medicos.nombre_apellido IS 'Nombre y Apellido';
 
 
 --
--- Name: COLUMN medico.tlf; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN medicos.cedula; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.medico.tlf IS 'numero de contacto';
+COMMENT ON COLUMN public.medicos.cedula IS 'ID de la persona';
 
 
 --
--- Name: COLUMN medico.condicion; Type: COMMENT; Schema: public; Owner: postgres
+-- Name: COLUMN medicos.cargo; Type: COMMENT; Schema: public; Owner: postgres
 --
 
-COMMENT ON COLUMN public.medico.condicion IS 'Disponibilidad del medico en la fundación';
+COMMENT ON COLUMN public.medicos.cargo IS 'que posición tiene';
+
+
+--
+-- Name: COLUMN medicos.tlf; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.medicos.tlf IS 'numero de contacto';
+
+
+--
+-- Name: COLUMN medicos.condicion; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.medicos.condicion IS 'Disponibilidad del medico en la fundación';
+
+
+--
+-- Name: COLUMN medicos.especialidad; Type: COMMENT; Schema: public; Owner: postgres
+--
+
+COMMENT ON COLUMN public.medicos.especialidad IS 'Titulo o estudio realizado';
 
 
 --
@@ -1061,7 +1054,7 @@ ALTER TABLE public.medicos_id_medico_seq OWNER TO postgres;
 -- Name: medicos_id_medico_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.medicos_id_medico_seq OWNED BY public.medico.id_medico;
+ALTER SEQUENCE public.medicos_id_medico_seq OWNED BY public.medicos.id_medicos;
 
 
 --
@@ -1164,6 +1157,41 @@ ALTER TABLE public.permiso_id_permiso_seq OWNER TO postgres;
 --
 
 ALTER SEQUENCE public.permiso_id_permiso_seq OWNED BY public.permiso.id_permiso;
+
+
+--
+-- Name: servicios_medicos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.servicios_medicos (
+    id_servicios_medicos integer NOT NULL,
+    id_servicios integer NOT NULL,
+    id_medicos integer NOT NULL
+);
+
+
+ALTER TABLE public.servicios_medicos OWNER TO postgres;
+
+--
+-- Name: servicios_medicos_id_servicios_medicos_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.servicios_medicos_id_servicios_medicos_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.servicios_medicos_id_servicios_medicos_seq OWNER TO postgres;
+
+--
+-- Name: servicios_medicos_id_servicios_medicos_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.servicios_medicos_id_servicios_medicos_seq OWNED BY public.servicios_medicos.id_servicios_medicos;
 
 
 --
@@ -1368,7 +1396,7 @@ ALTER SEQUENCE public.tipo_solicitud_id_tipo_solicitud_seq OWNED BY public.tipo_
 
 CREATE TABLE public.usuario (
     id_usuario integer NOT NULL,
-    cedula character(8) NOT NULL,
+    cedula integer NOT NULL,
     nombre_apellido character(45) NOT NULL,
     cargo character(30),
     username character(20) NOT NULL,
@@ -1641,13 +1669,6 @@ ALTER TABLE ONLY public.configuracion ALTER COLUMN id_configuracion SET DEFAULT 
 
 
 --
--- Name: especialidad id_especialidad; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.especialidad ALTER COLUMN id_especialidad SET DEFAULT nextval('public.especialidad_id_especialidad_seq'::regclass);
-
-
---
 -- Name: familiar id_familiar; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -1662,10 +1683,10 @@ ALTER TABLE ONLY public.familiar_solicitud ALTER COLUMN id_familiar_solicitud SE
 
 
 --
--- Name: medico id_medico; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: medicos id_medicos; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.medico ALTER COLUMN id_medico SET DEFAULT nextval('public.medicos_id_medico_seq'::regclass);
+ALTER TABLE ONLY public.medicos ALTER COLUMN id_medicos SET DEFAULT nextval('public.medicos_id_medico_seq'::regclass);
 
 
 --
@@ -1673,6 +1694,20 @@ ALTER TABLE ONLY public.medico ALTER COLUMN id_medico SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.permiso ALTER COLUMN id_permiso SET DEFAULT nextval('public.permiso_id_permiso_seq'::regclass);
+
+
+--
+-- Name: servicios id_servicios; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.servicios ALTER COLUMN id_servicios SET DEFAULT nextval('public.especialidad_id_especialidad_seq'::regclass);
+
+
+--
+-- Name: servicios_medicos id_servicios_medicos; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.servicios_medicos ALTER COLUMN id_servicios_medicos SET DEFAULT nextval('public.servicios_medicos_id_servicios_medicos_seq'::regclass);
 
 
 --
@@ -1715,6 +1750,256 @@ ALTER TABLE ONLY public.usuario_permiso ALTER COLUMN id_usuario_permiso SET DEFA
 --
 
 ALTER TABLE ONLY public.visita_social ALTER COLUMN id_visita_social SET DEFAULT nextval('public.visita_social_id_visita_social_seq'::regclass);
+
+
+--
+-- Data for Name: area_fisica; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: area_medica; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: atendidas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: beneficiario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: bitacora; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: citas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: configuracion; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: familiar; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: familiar_solicitud; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: medicos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.medicos VALUES (1, 'Deibys                                       ', 19640186, 'Analista                                     ', '04263562547', false, 'Informatica                                  ');
+
+
+--
+-- Data for Name: permiso; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: servicios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.servicios VALUES (1, 'odontologia                                  ', false, 'todo con la geta                                            ');
+
+
+--
+-- Data for Name: servicios_medicos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: solicitante; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: solicitud; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: tipo_solicitud; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.usuario VALUES (1, 19640186, 'Deibys frteytez                              ', 'Analista                      ', 'Deibys              ', '123456                                                          ', true);
+
+
+--
+-- Data for Name: usuario_permiso; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Data for Name: visita_social; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- Name: area_fisica_id_area_fisica_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.area_fisica_id_area_fisica_seq', 1, false);
+
+
+--
+-- Name: area_medica_id_area_medica_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.area_medica_id_area_medica_seq', 1, false);
+
+
+--
+-- Name: atendidos_id_atendidos_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.atendidos_id_atendidos_seq', 1, false);
+
+
+--
+-- Name: beneficiario_id_beneficiario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.beneficiario_id_beneficiario_seq', 1, false);
+
+
+--
+-- Name: bitacora_id_bitacora_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.bitacora_id_bitacora_seq', 1, false);
+
+
+--
+-- Name: citas_id_citas_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.citas_id_citas_seq', 1, false);
+
+
+--
+-- Name: configuracion_id_configuracion_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.configuracion_id_configuracion_seq', 1, false);
+
+
+--
+-- Name: especialidad_id_especialidad_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.especialidad_id_especialidad_seq', 1, true);
+
+
+--
+-- Name: familiar_id_familiar_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.familiar_id_familiar_seq', 1, false);
+
+
+--
+-- Name: familiar_solicitud_id_familiar_solicitud_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.familiar_solicitud_id_familiar_solicitud_seq', 1, false);
+
+
+--
+-- Name: medicos_id_medico_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.medicos_id_medico_seq', 1, true);
+
+
+--
+-- Name: permiso_id_permiso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.permiso_id_permiso_seq', 1, false);
+
+
+--
+-- Name: servicios_medicos_id_servicios_medicos_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.servicios_medicos_id_servicios_medicos_seq', 1, false);
+
+
+--
+-- Name: solicitante_id_solicitante_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.solicitante_id_solicitante_seq', 1, false);
+
+
+--
+-- Name: solicitud_id_solicitud_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.solicitud_id_solicitud_seq', 1, false);
+
+
+--
+-- Name: tipo_solicitud_id_tipo_solicitud_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_solicitud_id_tipo_solicitud_seq', 1, false);
+
+
+--
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.usuario_id_usuario_seq', 1, true);
+
+
+--
+-- Name: usuario_permiso_id_usuario_permiso_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.usuario_permiso_id_usuario_permiso_seq', 1, false);
+
+
+--
+-- Name: visita_social_id_visita_social_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.visita_social_id_visita_social_seq', 1, false);
 
 
 --
@@ -1774,11 +2059,11 @@ ALTER TABLE ONLY public.configuracion
 
 
 --
--- Name: especialidad especialidad_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: servicios especialidad_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.especialidad
-    ADD CONSTRAINT especialidad_pkey PRIMARY KEY (id_especialidad);
+ALTER TABLE ONLY public.servicios
+    ADD CONSTRAINT especialidad_pkey PRIMARY KEY (id_servicios);
 
 
 --
@@ -1798,11 +2083,11 @@ ALTER TABLE ONLY public.familiar_solicitud
 
 
 --
--- Name: medico medicos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: medicos medicos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.medico
-    ADD CONSTRAINT medicos_pkey PRIMARY KEY (id_medico);
+ALTER TABLE ONLY public.medicos
+    ADD CONSTRAINT medicos_pkey PRIMARY KEY (id_medicos);
 
 
 --
@@ -1811,6 +2096,14 @@ ALTER TABLE ONLY public.medico
 
 ALTER TABLE ONLY public.permiso
     ADD CONSTRAINT permiso_pkey PRIMARY KEY (id_permiso);
+
+
+--
+-- Name: servicios_medicos servicios_medicos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.servicios_medicos
+    ADD CONSTRAINT servicios_medicos_pkey PRIMARY KEY (id_servicios_medicos);
 
 
 --
@@ -1846,10 +2139,10 @@ ALTER TABLE ONLY public.tipo_solicitud
 
 
 --
--- Name: medico uq_cedula; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: medicos uq_cedula; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.medico
+ALTER TABLE ONLY public.medicos
     ADD CONSTRAINT uq_cedula UNIQUE (cedula);
 
 
@@ -1906,7 +2199,7 @@ ALTER TABLE ONLY public.atendidas
 --
 
 ALTER TABLE ONLY public.atendidas
-    ADD CONSTRAINT fk_atendidos_medico FOREIGN KEY (id_medico) REFERENCES public.medico(id_medico) ON UPDATE CASCADE;
+    ADD CONSTRAINT fk_atendidos_medico FOREIGN KEY (id_medicos) REFERENCES public.medicos(id_medicos) ON UPDATE CASCADE;
 
 
 --
@@ -1938,7 +2231,7 @@ ALTER TABLE ONLY public.citas
 --
 
 ALTER TABLE ONLY public.citas
-    ADD CONSTRAINT fk_citas_medico FOREIGN KEY (id_medico) REFERENCES public.medico(id_medico) ON UPDATE CASCADE;
+    ADD CONSTRAINT fk_citas_medico FOREIGN KEY (id_medicos) REFERENCES public.medicos(id_medicos) ON UPDATE CASCADE;
 
 
 --
@@ -1958,11 +2251,19 @@ ALTER TABLE ONLY public.familiar_solicitud
 
 
 --
--- Name: medico fk_medico_especialidad; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: servicios_medicos fk_s_m_m; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.medico
-    ADD CONSTRAINT fk_medico_especialidad FOREIGN KEY (id_especialidad) REFERENCES public.especialidad(id_especialidad) ON UPDATE CASCADE;
+ALTER TABLE ONLY public.servicios_medicos
+    ADD CONSTRAINT fk_s_m_m FOREIGN KEY (id_medicos) REFERENCES public.medicos(id_medicos) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: servicios_medicos fk_s_m_s; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.servicios_medicos
+    ADD CONSTRAINT fk_s_m_s FOREIGN KEY (id_servicios) REFERENCES public.servicios(id_servicios) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

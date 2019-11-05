@@ -2,9 +2,9 @@
 	
 	if (is_file("vista/vista_".$action.".php")) {
 		
-		require_once("modelos/modelo_medico.php");
+		require_once("modelos/modelo_medicos.php");
 
-		$medico = new Medico();
+		$medicos = new Medicos();
 
 		require_once("vista/vista_".$action.".php");
 		

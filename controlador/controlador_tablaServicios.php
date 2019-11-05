@@ -2,9 +2,9 @@
 	
 	if (is_file("vista/vista_".$action.".php")) {
 		
-		require_once("modelos/modelo_especialidad.php");
+		require_once("modelos/modelo_servicios.php");
 
-		$especialidad = new Especialidad();
+		$servicios = new Servicios();
 
 		require_once("vista/vista_".$action.".php");
 		

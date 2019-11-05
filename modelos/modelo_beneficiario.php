@@ -23,19 +23,19 @@
 		}
 
 		public function setId_solicitante($id_solicitante){
-			$this->id_solicitante = $id_solicitante;
+			$this->id_solicitante = limpiarCadena($id_solicitante);
 		}
 
 		public function setCedula($cedula){
-			$this->cedula = $cedula;
+			$this->cedula = limpiarCadena($cedula);
 		}
 
 		public function setNombre_apellido($nombre_apellido){
-			$this->nombre_apellido = $nombre_apellido;
+			$this->nombre_apellido = limpiarCadena($nombre_apellido);
 		}
 
 		public function setFecha_nacimiento($fecha_nacimiento){
-			$this->fecha_nacimiento = $fecha_nacimiento;
+			$this->fecha_nacimiento = limpiarCadena($fecha_nacimiento);
 		}
 		
 
@@ -43,10 +43,10 @@
 
 			$stmt = C_conexion::getConexion()->prepare("INSERT INTO beneficiario (id_solicitante,cedula,nombre_apellido,fecha_nacimiento) VALUES (:id_solicitante,:cedula,:nombre_apellido,:fecha_nacimiento)");
 
-			$stmt->bindParam(":id_solicitante", limpiarCadena($this->id_solicitante), PDO::PARAM_STR);
-			$stmt->bindParam(":cedula", limpiarCadena($this->cedula), PDO::PARAM_STR);
-			$stmt->bindParam(":nombre_apellido", limpiarCadena($this->nombre_apellido), PDO::PARAM_STR);
-			$stmt->bindParam(":fecha_nacimiento", limpiarCadena($this->fecha_nacimiento), PDO::PARAM_STR);
+			$stmt->bindParam(":id_solicitante",$this->id_solicitante,PDO::PARAM_STR);
+			$stmt->bindParam(":cedula",$this->cedula,PDO::PARAM_STR);
+			$stmt->bindParam(":nombre_apellido",$this->nombre_apellido,PDO::PARAM_STR);
+			$stmt->bindParam(":fecha_nacimiento",$this->fecha_nacimiento,PDO::PARAM_STR);
 
 			$stmt->execute();
 			return C_conexion::getConexion()->lastInsertId();
@@ -57,10 +57,10 @@
 
 		public function actualizarB(){
 			$stmt = C_conexion::getConexion()->prepare("UPDATE beneficiario SET id_solicitante= :id_solicitante,cedula= :cedula,nombre_apellido= :nombre_apellido,fecha_nacimiento= :fecha_nacimiento WHERE id_beneficiario = :id_beneficiario");
-			$stmt->bindParam(":id_solicitante", limpiarCadena($this->id_solicitante), PDO::PARAM_STR);
-			$stmt->bindParam(":cedula", limpiarCadena($this->cedula), PDO::PARAM_STR);
-			$stmt->bindParam(":nombre_apellido", limpiarCadena($this->nombre_apellido), PDO::PARAM_STR);
-			$stmt->bindParam(":fecha_nacimiento", limpiarCadena($this->fecha_nacimiento), PDO::PARAM_STR);
+			$stmt->bindParam(":id_solicitante",$this->id_solicitante,PDO::PARAM_STR);
+			$stmt->bindParam(":cedula",$this->cedula,PDO::PARAM_STR);
+			$stmt->bindParam(":nombre_apellido",$this->nombre_apellido,PDO::PARAM_STR);
+			$stmt->bindParam(":fecha_nacimiento",$this->fecha_nacimiento,PDO::PARAM_STR);
 			$stmt->bindParam(":id_beneficiario",$this->id_beneficiario);
 
 			return $stmt->execute();

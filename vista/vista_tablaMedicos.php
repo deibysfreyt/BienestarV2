@@ -26,8 +26,8 @@
                     <div class="row">
                     	<div class="box-header with-border" style="margin-top: -40px;">
                 			<!-- Bonton para mostrar el formulario -->
-			            	<a href="especialidad"><button class="btn btn-rose btn-round" id="btnagregar">
-			              		<i class="fa fa-plus-circle"></i> Agregar Nueva Especialidad
+			            	<a href="medicos"><button class="btn btn-rose btn-round" id="btnagregar">
+			              		<i class="fa fa-plus-circle"></i> Agregar Nuevo Medico
 			            	</button></a>
 			            	<div class="box-tools pull-right"></div>
 			          	</div>                       
@@ -37,7 +37,7 @@
                                     <i class="material-icons">assignment</i>
                                 </div>
                                 <div class="card-content">
-                                    <h4 class="card-title">Tablas de Solicitudes Activas o Inactivas</h4>
+                                    <h4 class="card-title">Tablas de Medicos Activos o Inactivos</h4>
                                     <div class="toolbar">
                                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                                     </div>
@@ -45,24 +45,30 @@
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                                 <tr>
+                                                    <th><b>Espcialidad</b></th>
                                                     <th><b>Nombre</b></th>
-                                                    <th><b>Descripción</b></th>
-                                                    <th><b>Estado</b></th>                                                    
+                                                    <th><b>.CI.</b></th>
+                                                    <th><b>cargo</b></th>
+                                                    <th><b>Tlf</b></th>
+                                                    <th><b>Estado</b></th>                             
                                                     <th class="disabled-sorting text-right"><b>Opciones</b></th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Nombre</th>
-                                                    <th>Descripción</th>
-                                                    <th>Estado</th>
+                                                    <th><b>Espcialidad</b></th>
+                                                    <th><b>Nombre</b></th>
+                                                    <th><b>.CI.</b></th>
+                                                    <th><b>cargo</b></th>
+                                                    <th><b>Tlf</b></th>
+                                                    <th><b>Estado</b></th>
                                                     <th class="text-right">Opciones</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
                                                 <?php
                                                     //Listamos todo los datos para mostrarlo en el DATA TABLE
-                                                    $resp=$especialidad->listarE();
+                                                    $resp=$medicos->listarM();
                                                             
                                                     foreach ($resp as $row => $item) {
 
@@ -74,13 +80,16 @@
                                                             $tipo = "warning";
                                                         }                                                                
                                                             echo '<tr>
-                                                                    <td>'.$item["nombre"].'</td>
-                                                                    <td>'.$item["descripcion"].'</td>
+                                                                    <td>'.$item["especialidad"].'</td>
+                                                                    <td>'.$item["nombre_apellido"].'</td>
+                                                                    <td>'.$item["cedula"].'</td>
+                                                                    <td>'.$item["cargo"].'</td>
+                                                                    <td>'.$item["tlf"].'</td>
                                                                     <td>
                                                                         <a href="#" class="btn btn-simple btn-'.$tipo.' btn-icon"><i class="material-icons">'.$icono.'</i></a>
                                                                     </td>
                                                                     <td class="text-right">
-                                                                        <a href="index.php?do=especialidad&id='.$item["id_especialidad"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
+                                                                        <a href="index.php?do=medicos&id='.$item["id_medicos"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
                                                                     </td>
                                                                 </tr>';                                                         
                                                     }//fin del foreach                                        

@@ -5,12 +5,12 @@
 
 	require_once("modelo_conexion.php");
 
-	class Especialidad extends C_conexion
+	class Servicios extends C_conexion
 	{
 		private $nombre,
 				$condicion,
 				$descripcion,
-				$id_especialidad;
+				$id_servicios;
 
 		
 		function __construct()
@@ -30,14 +30,14 @@
 			$this->condicion = limpiarCadena($condicion);
 		}
 
-		public function setIdEspecialidad($id_especialidad){
-			$this->id_especialidad = limpiarCadena($id_especialidad);
+		public function setIdServicios($id_servicios){
+			$this->id_servicios = limpiarCadena($id_servicios);
 		}
 
 
-		public function insertarE() {
+		public function insertarSr() {
 
-			$stmt = C_conexion::getConexion()->prepare("INSERT INTO especialidad (nombre,condicion,descripcion) VALUES (:nombre,:condicion,:descripcion)");
+			$stmt = C_conexion::getConexion()->prepare("INSERT INTO servicios (nombre,condicion,descripcion) VALUES (:nombre,:condicion,:descripcion)");
 
 			$stmt->bindParam(":nombre",$this->nombre,PDO::PARAM_STR);
 			$stmt->bindParam(":condicion",$this->condicion,PDO::PARAM_INT);
@@ -48,9 +48,9 @@
 			$stmt->clouse();
 		}
 
-		public function listarE(){
+		public function listarSr(){
 			
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM especialidad");
+			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM servicios");
 			
 			$stmt->execute();
 
@@ -59,9 +59,9 @@
 			$stmt->clouse();
 		}
 
-		public function mostrarE($id){
+		public function mostrarSr($id){
 			
-			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM especialidad WHERE id_especialidad = :id");
+			$stmt = C_conexion::getConexion()->prepare("SELECT * FROM servicios WHERE id_servicios = :id");
 			
 			$stmt->bindParam(":id",$id,PDO::PARAM_INT);
 
@@ -72,22 +72,22 @@
 			$stmt->close();
 		}
 
-		public function actualizarE(){
+		public function actualizarSr(){
 			
-			$stmt = C_conexion::getConexion()->prepare("UPDATE especialidad SET nombre = :nombre,condicion = :condicion,descripcion = :descripcion WHERE id_especialidad = :id_especialidad");
+			$stmt = C_conexion::getConexion()->prepare("UPDATE servicios SET nombre = :nombre,condicion = :condicion,descripcion = :descripcion WHERE id_servicios = :id_servicios");
 
 			$stmt->bindParam(":nombre",$this->nombre,PDO::PARAM_STR);
 			$stmt->bindParam(":condicion",$this->condicion,PDO::PARAM_INT);
 			$stmt->bindParam(":descripcion",$this->descripcion,PDO::PARAM_STR);
-			$stmt->bindParam(":id_especialidad",$this->id_especialidad,PDO::PARAM_INT);
+			$stmt->bindParam(":id_servicios",$this->id_servicios,PDO::PARAM_INT);
 
 			return $stmt->execute();
 			$stmt->clouse();
 		}
 
-		public function seleccionarE(){
+		public function seleccionarSr(){
 
-			$stmt = C_conexion::getConexion()->prepare("SELECT id_especialidad,nombre FROM especialidad WHERE condicion = true");
+			$stmt = C_conexion::getConexion()->prepare("SELECT id_servicios,nombre FROM servicios WHERE condicion = true");
 
 			$stmt->execute();
 
