@@ -15,7 +15,7 @@
 		//Preguntamos si la variable esta definida o declarada, es decir que no sea NULL
 		if (!empty($_POST)) {
 
-			if ( preg_match('/[[:digit:]]/', $_POST["id_medico"]) && preg_match('/[[:digit:]]/', $_POST["id_servicios"]) ) {
+			if ( preg_match('/[[:digit:]]/', $_POST["id_medicos"]) && preg_match('/[[:digit:]]/', $_POST["id_servicios"]) ) {
 				
 				$id_medicos = $_POST["id_medicos"];
 				$id_servicios = $_POST["id_servicios"];
@@ -29,7 +29,7 @@
 				$fecha = $_POST["fecha"];
 				$lugar = $_POST["lugar"];
 				$peso = $_POST["peso"];
-				$talla= $_POST["talla"];
+				$talla = $_POST["talla"];
 				$diagnostico = $_POST["diagnostico"];
 				$edad = $_POST["edad"];
 					
@@ -38,14 +38,14 @@
 
 				while ($num_elementos < count($id_atendidas)) {
 
-					$medicos->setIdMedicos($id_medicos);
-					$servicios->setIdServicios($id_servicios);
+					$SM->setIdMedicos($id_medicos);
+					$SM->setIdServicios($id_servicios);
 
 					$solicitante->setCedula($cedula[$num_elementos]);
 					$solicitante->setTlf_movil($tlf_movil[$num_elementos]);
 					$solicitante->setParroquia($parroquia[$num_elementos]);
 
-					$datos = $solicitante->ConsultaCI($cedula[$num_elementos]);
+					$datos = $solicitante->ConsultaCI();
 					$id_S = $datos["id_solicitante"];
 
 
@@ -53,7 +53,7 @@
 						$solicitante->setNombre_apellido($nombre_apellido[$num_elementos]);
 						$id_S = $solicitante->insertarS();
 					}else{
-						$solicitante->setId_Solicitante($id_S);
+						//$solicitante->setId_Solicitante($id_S);
 						$solicitante->actualizarPAS();
 					}
 				
@@ -62,7 +62,7 @@
 					$Bfo = $beneficiario->insertarB();
 
 					$atendidas->setIdBeneficiario($Bfo);
-					$atendidas->setIdMedico($id_medico);
+					
 					$atendidas->setFecha($fecha);
 					$atendidas->setLugar($lugar);
 					$atendidas->setPeso($peso[$num_elementos]);
@@ -72,17 +72,20 @@
 
 					$rsp = $atendidas->insertarPA();
 
+					$SM->setIdAtendidas($rsp);
+					$SM->setIdMedicos($id_medicos);
+					$SM->setIdServicios($id_servicios);
+					$ServMedi= $SM->insertarSM();
+
 					$num_elementos=$num_elementos + 1;
 
 				}
 
-				if ($rsp) {
+				if ($ServMedi) {
 					header("Location:index.php?do=tablaEspecialidad");
-					echo $id_S;
 					exit;
 				} else {
-					//header("Location:index.php?do=personasAtendidas");
-					echo $id_S;
+					header("Location:index.php?do=index");
 					exit;
 				}
 				//header("Location:consultaSolicitud");

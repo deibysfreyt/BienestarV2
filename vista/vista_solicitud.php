@@ -204,8 +204,8 @@
                                                         </span>
                                                         <div class="form-group label-floating">
                                                             <label class="control-label">Cedula</label>
-                                                            <input type="text" name="cedula_b" id="cedula_b" maxlength="8" class="form-control" value="<?php if(isset($datos["cedula_b"])){ echo trim($datos["cedula_b"]); } ?>">
-                                                            <input type="hidden" name="id_beneficiario" id="id_beneficiario" value="<?php if(isset($datos["id_beneficiario"])){ echo trim($datos["id_beneficiario"]); } ?>">
+                                                            <input type="text" name="cedula_b" id="cedula_b" maxlength="8" class="form-control" value="<?php if(isset($datosB["cedula"])){ echo trim($datosB["cedula"]);  }else{ echo "0"; } ?>">
+                                                            <input type="hidden" name="id_beneficiario" id="id_beneficiario" value="<?php if(isset($datosB["id_beneficiario"])){ echo trim($datosB["id_beneficiario"]); } ?>">
                                                         </div>
                                                     </div>                                               
                                                 </div>
@@ -218,7 +218,7 @@
                                                             <label class="control-label">Nombre y Apellido
                                                                 <small>(required)</small>
                                                             </label>
-                                                            <input type="text" name="nombre_apellido_b" id="nombre_apellido_b" maxlength="45" class="form-control" value="<?php if(isset($datos["nombre_apellido_b"])){ echo trim($datos["nombre_apellido_b"]); } ?>">
+                                                            <input type="text" name="nombre_apellido_b" id="nombre_apellido_b" maxlength="45" class="form-control" value="<?php if(isset($datosB["nombre_apellido"])){ echo trim($datosB["nombre_apellido"]); } ?>">
                                                         </div>
                                                     </div>                                                   
                                                 </div>
@@ -228,7 +228,7 @@
                                                             <i class="material-icons">event_note</i>
                                                         </span>
                                                         <div class="form-group label-floating">
-                                                            <input type="date" name="fecha_nacimiento_b" id="fecha_nacimiento_b" class="form-control" value="<?php if(isset($datos["fecha_nacimiento_b"])){ echo trim($datos["fecha_nacimiento_b"]); } ?>">
+                                                            <input type="date" name="fecha_nacimiento_b" id="fecha_nacimiento_b" class="form-control" value="<?php if(isset($datosB["fecha_nacimiento"])){ echo trim($datosB["fecha_nacimiento"]); } ?>">
                                                         </div>
                                                     </div>                                                   
                                                 </div>

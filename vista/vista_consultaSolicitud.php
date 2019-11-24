@@ -86,7 +86,7 @@
                                                                     <td><a href="index.php?do=solicitud&id_s='.$item["id_s"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">account_circle</i></a>'.$item["solicitante"].'</td>
                                                                     <td>'.$item["beneficiario"].'</td>
                                                                     <td class="text-right">
-                                                                        <a href="index.php?do=solicitud&id_sb='.$item["id_b"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
+                                                                        <a href="index.php?do=solicitud&id_b='.$item["id_b"].'" class="btn btn-simple btn-warning btn-icon"><i class="material-icons">dvr</i></a>
                                                                     </td>
                                                                 </tr>';                                                         
                                                     }//fin del foreach                                        

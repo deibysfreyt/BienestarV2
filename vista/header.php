@@ -128,10 +128,7 @@
                                 </li>
                                 <li>
                                     <a href="tablaMedicos">Gestionar Medico</a>
-                                </li>
-                                <li>
-                                    <a href="servicios">Servicios</a>
-                                </li>
+                                </li>                                
                                 <li>
                                     <a href="tablaServicios">Gestion de Servicios</a>
                                 </li>

@@ -38,22 +38,35 @@
                                             Build Your Profile
                                         </h3>
                                         <h5>This information will let us know more about you.</h5>
-                                        <label class="control-label" style="border: 0;color: red;"><b>Fecha de Solicitud:</b></label>
-                                        <input name="fecha" type="date" style="border: 0; font-weight: bold;" id="fecha">
+                                        
                                         <label class="control-label" style="color: red;"><b>Lugar:</b></label>
-                                        <input name="lugar" type="text" style="font-weight: bold;" id="lugar">
-                                        <label class="control-label" style="border: 0;color: red;"><b>Especialidad y Medico Tratante:</b></label>
-                                        <select name="id_medico" id="id_medico"  data-live-search="true">
+                                        <input name="lugar" type="text" style="font-weight: bold; border-top: none;" id="lugar" required="">
+                                        <label class="control-label" style="border: 0;color: red;"><b>Medico Tratante:</b></label>
+                                        <select name="id_medicos" id="id_medicos"  data-live-search="true" required="">
                                             <option disabled="" selected=""></option>
                                             <?php
                                                 //Listamos todo los datos para mostrarlo en el DATA TABLE
-                                                $resp=$medico->seleccionarM();
+                                                $resp=$medicos->seleccionarM();
                                                            
                                                 foreach ($resp as $row => $item) {
-                                                    echo '<option value="'.$item["id_medico"].'" style="font-weight: bold;">'.$item["nombre"].'- Dr. '.$item["nombre_apellido"].'</option>';
-                                                                    }//fin del foreach
+                                                    echo '<option value="'.$item["id_medicos"].'" style="font-weight: bold;"> Dr. '.$item["nombre_apellido"].'</option>';
+                                                }//fin del foreach
                                             ?>
-                                            </select>
+                                        </select>
+                                        <label class="control-label" style="border: 0;color: red;"><b>Servicios:</b></label>
+                                        <select name="id_servicios" id="id_servicios"  data-live-search="true" required="">
+                                            <option disabled="" selected=""></option>
+                                            <?php
+                                                //Listamos todo los datos para mostrarlo en el DATA TABLE
+                                                $resp=$servicios->seleccionarSr();
+                                                           
+                                                foreach ($resp as $row => $item) {
+                                                    echo '<option value="'.$item["id_servicios"].'" style="font-weight: bold;">'.$item["nombre"].'</option>';
+                                                }//fin del foreach
+                                            ?>
+                                        </select>
+                                        <label class="control-label" style="border: 0;color: red;"><b>Fecha:</b></label>
+                                        <input name="fecha" type="date" style="border: 0; font-weight: bold;" id="fecha" required="">
                                     </div>
                                     <div class="wizard-navigation" style="margin-top: -2em">
                                         <ul>
@@ -67,21 +80,21 @@
                                             <div class="row">
                                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: -5em">
                                                     <a>           
-                                                      <button id="" type="button" class="btn btn-rose btn-round" onclick="agregarDetalle()"> <span class="fa fa-plus"></span> Agregar Familiar</button>
+                                                      <button id="" type="button" class="btn btn-rose btn-round" onclick="agregarDetalle()"> <span class="fa fa-plus"></span> Agregar Personas</button>
                                                     </a>
                                                 </div>
                                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                                                     <table id="detalles" class="table" style="background-color: rgba(200, 200, 200, 0.2);">
                                                       <thead class="text-rose">
-                                                        <th>Opciones</th>
-                                                        <th>Nom. y Ape.</th>
+                                                        <th>Opc.</th>
+                                                        <th>Benef.</th>
                                                         <th>Edad</th>
                                                         <th>Repre.</th>
                                                         <th>.CI.</th>
                                                         <th>Tlf:</th>
-                                                        <th>Parroquia</th>
-                                                        <th>talla</th>
-                                                        <th>Peso</th>
+                                                        <th>Parroq.</th>
+                                                        <th>T.</th>
+                                                        <th>P.</th>
                                                         <th>Diagn.</th>                              
                                                       </thead>
                                                       <tbody>

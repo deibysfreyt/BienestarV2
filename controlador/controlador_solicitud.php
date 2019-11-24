@@ -20,20 +20,26 @@
 		if (isset($_GET["id_s"])) {
 			if (preg_match('/^[[:digit:]]+$/', $_GET["id_s"])) {
 				$id_s = (int)$_GET["id_s"];
-				$datos = $solicitud->mostrarS($id_s);
+				//$datos = $solicitud->mostrarS($id_s);
+				$datos = $solicitante->mostrarS($id_s);
 			}
 		}
-		if (isset($_GET["id_sb"])) {
-			if (preg_match('/^[[:digit:]]+$/', $_GET["id_sb"])) {
-				$id_sb = (int)$_GET["id_sb"];
-				$datos = $solicitud->mostrarSB($id_sb);
+		if (isset($_GET["id_b"])) {
+			if (preg_match('/^[[:digit:]]+$/', $_GET["id_b"])) {
+				$id_b = (int)$_GET["id_b"];
+				//$datos = $solicitud->mostrarSB($id_sb);
+				
+				$datosB = $beneficiario->mostrarB($id_b);
+				$id_s = $datosB["id_solicitante"];
+				$datos = $solicitante->mostrarS($id_s);
 			}
 		}
-		if (isset($_POST["id_solicitud"])) {
-			$id_solicitante = limpiarCadena($_POST["id_solicitante"]);
-			$id_beneficiario = limpiarCadena($_POST["id_beneficiario"]);
+		if (!empty($_POST)) {
 
 			if ( preg_match('/[[:digit:]]/', $_POST["cedula"]) && preg_match('/[[:alpha:]]/', $_POST["nombre_apellido"]) && preg_match('/[[:alpha:]]/', $_POST["nombre_apellido_b"]) ) {
+
+				$id_solicitante = limpiarCadena($_POST["id_solicitante"]);
+				$id_beneficiario = limpiarCadena($_POST["id_beneficiario"]);
 					// Solicitante
 				$solicitante->setCedula($_POST["cedula"]);
 				$solicitante->setNombre_apellido($_POST["nombre_apellido"]);
@@ -45,28 +51,26 @@
 				$solicitante->setOcupacion($_POST["ocupacion"]);
 				$solicitante->setIngreso($_POST["ingreso"]);
 				$solicitante->setEstado_civil($_POST["estado_civil"]);
-					//$idSolicitante = $solicitante->insertarS();
-					// Beneficiario
-					//$beneficiario->setId_solicitante($idSolicitante);
+				
+					//Beneficiario
 				$beneficiario->setCedula($_POST["cedula_b"]);
 				$beneficiario->setNombre_apellido($_POST["nombre_apellido_b"]);
 				$beneficiario->setFecha_nacimiento($_POST["fecha_nacimiento_b"]);
-					//$idBeneficiario = $beneficiario->insertarB();
+
 					// Area Fisica
 				$areaFisica->setTipo_vivienda($_POST["tipo_vivienda"]);
 				$areaFisica->setTenencia($_POST["tenencia"]);
 				$areaFisica->setConstruccion($_POST["construccion"]);
 				$areaFisica->setTipo_piso($_POST["tipo_piso"]);
-					//$idArea_Fisica = $areaFisica->insertarAF();
-					//Solicitud $idArea_Fisica = 13;
+				$idArea_Fisica = $areaFisica->insertarAF(); // se ejecuta y lo guada
+				
 				$id_usuario = 1; // Mientras tanto
 				$solicitud->setId_usuario($id_usuario);
-					//$solicitud->setId_beneficiario($idBeneficiario);
 				$solicitud->setId_tipo_solicitud($_POST["id_tipo_solicitud"]);
-					//$solicitud->setId_area_fisica($idArea_Fisica);
 				$solicitud->setFecha($_POST["fecha"]);
 				$solicitud->setSemana_embarazo($_POST["semana_embarazo"]);
 				$solicitud->setEstado($_POST["estado"]);
+				$solicitud->setId_area_fisica($idArea_Fisica);
 					//$idSolicitud = $solicitud->insertarSlt();
 
 				if (!empty($id_solicitante) && empty($id_beneficiario)) {
@@ -76,8 +80,6 @@
 						 $beneficiario->setId_solicitante($id_solicitante);
 						$idBeneficiario = $beneficiario->insertarB();
 						$solicitud->setId_beneficiario($idBeneficiario);
-						$idArea_Fisica = $areaFisica->insertarAF();
-						$solicitud->setId_area_fisica($idArea_Fisica);
 						$idSolicitud = $solicitud->insertarSlt();
 						}
 				}else if (empty($id_solicitante) && !empty($id_beneficiario)) {
@@ -87,8 +89,6 @@
 					$actualizar_B = $beneficiario->actualizarB();
 					if ($actualizar_B) {
 						$solicitud->setId_beneficiario($id_beneficiario);
-						$idArea_Fisica = $areaFisica->insertarAF();
-						$solicitud->setId_area_fisica($idArea_Fisica);
 						$idSolicitud = $solicitud->insertarSlt();
 					}
 				}else if (!empty($id_solicitante) && !empty($id_beneficiario)) {
@@ -100,8 +100,6 @@
 						$actualizar_B = $beneficiario->actualizarB();
 						if ($actualizar_B) {
 							$solicitud->setId_beneficiario($id_beneficiario);
-							$idArea_Fisica = $areaFisica->insertarAF();
-							$solicitud->setId_area_fisica($idArea_Fisica);
 							$idSolicitud = $solicitud->insertarSlt();
 						}
 					}
@@ -110,8 +108,7 @@
 					$beneficiario->setId_solicitante($idSolicitante);
 					$idBeneficiario = $beneficiario->insertarB();
 					$solicitud->setId_beneficiario($idBeneficiario);
-					$idArea_Fisica = $areaFisica->insertarAF();
-					$solicitud->setId_area_fisica($idArea_Fisica);
+					
 					$idSolicitud = $solicitud->insertarSlt();
 				}
 					// Area Medica
@@ -158,7 +155,7 @@
 				}
 				header("Location:index.php?do=consultaSolicitud&p=$idSolicitud");
 				//header("Location:consultaSolicitud");
-				echo $idSolicitud;
+				//echo $idSolicitud;
 				exit;
 			}
 		}
